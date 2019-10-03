@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+import React from 'react';
+import './App.css';
+import Articles from './components/Articles';
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Team from "./components/Team";
+import { Route, Switch } from "react-router-dom";
+
+
+
+const NotFound = () => {
+  return <div>Page not found</div>;
+};
+
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/team" component={Team} />
+        <Articles />
+        <Route component={NotFound} />
+        </Switch>
+    </div>
+  );
+=======
 import React from "react";
 // import Navbar from "./components/Navbar";
 import { Route, Switch } from "react-router-dom";
@@ -47,6 +78,7 @@ class App extends React.Component {
               </div>
     );
   }
+>>>>>>> 667e8a4db02965e61de9caf75e655feb7d8a61df
 }
 
 export default App;
