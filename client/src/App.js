@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom";
 // import TaskDetails from "./components/TaskDetails";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import SideBar from "./components/SideBar";
 
 // import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
@@ -37,18 +38,13 @@ class App extends React.Component {
 
         {/*  */}
         <Switch>
-        <Route
-          exact
-          path="/signup"
-          render={props => <Signup setUser={this.setUser} {...props} />}
+        <Route exact path="/signup" render={props => <Signup setUser={this.setUser} {...props} />}
         />
-        <Route
-          exact
-          path="/login"
-          render={props => <Login setUser={this.setUser} {...props} />}
+        <Route exact path="/login" render={props => <Login setUser={this.setUser} {...props} />}
         />
         </Switch>
-      </div>
+        <Route exact path="/funeral" component={SideBar} />
+              </div>
     );
   }
 }
