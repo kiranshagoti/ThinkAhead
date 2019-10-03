@@ -15,7 +15,7 @@ const funeralSchema = new Schema({
       originalName: String
     },
     invite: Array,
-    religon: String
+    religon: String,
   },
   body: {
     bodyinf: Boolean,
@@ -25,7 +25,7 @@ const funeralSchema = new Schema({
   details: {
     letters: String,
     quotes: String,
-    docs: Object //upload important files
+    docs: Object, //upload important files
   },
   theChosen: {
     //the <3 funeral-responsible

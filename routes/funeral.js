@@ -1,7 +1,19 @@
+
 const express = require("express");
 const router = express.Router();
 const uploadCloud = require("../config/cloudinary.js");
 const funeral = require("../models/Funeral");
+const passport = require("passport");
+
+//GET funeral page 
+router.get("/funeral", loginCheck(), (req, res, next) => {
+  funeral
+    .find()
+    .then(data => {
+      res.render("Funeral", { funeral: data, user: req.user });
+    })
+    .catch(err => console.log(err));
+});
 
 const loginCheck = () => {
   return (req, res, next) => {
@@ -15,16 +27,6 @@ const loginCheck = () => {
     }
   };
 };
-
-/* GET funeral page */
-router.get("/funeral", loginCheck(), (req, res, next) => {
-  funeral
-    .find()
-    .then(data => {
-      res.render("Funeral", { funeral: data, user: req.user });
-    })
-    .catch(err => console.log(err));
-});
 
 //creates the funeral collection
 router.post("/funeral", uploadCloud("photo"), (req, res, next) => {
