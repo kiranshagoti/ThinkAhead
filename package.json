@@ -23,13 +23,14 @@
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "react-router-dom": "^5.1.2",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
   },
-  "nodemonConfig":{
-    "ignore":[
+  "nodemonConfig": {
+    "ignore": [
       "client/*"
     ]
   }
