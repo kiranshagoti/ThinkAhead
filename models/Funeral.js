@@ -3,37 +3,58 @@ const Schema = mongoose.Schema;
 
 const funeralSchema = new Schema({
   event: {
-    location: String,
-    adress: String,
-    foods: Array,
-    drinks: Array,
-    vibe: String,
-    music: Array,
-    img: {
+    vibe:
+     {
+      foods: String,
+      drinks: String,
+      dresscode: String,
+      mood: String
+    },
+    body: {
+      bodyinf:{ 
+      burried: Boolean,
+      cremated: Boolean,
+      donate: Boolean,
+      other: String,
+      cloths: String,
+      items: String,
+      },
+      religon: String,  
+      sience: String,
+      finalRest: { //added nigth time ss
+        adress: String,
+      },
+    },
+    where: {  
+      location: String,
+      adress: String,
+      invite: Array,
+    },
+    music: {
+      title: String,
+      artist: String,
+      spotify: String, ///or maybe something else
+    },
+    memories: {
       imgName: String,
       imgPath: String,
-      originalName: String
+      originalName: String,
+      story: String
     },
-    invite: Array,
-    religon: String
+
   },
-  body: {
-    bodyinf: Boolean,
-    cloths: String,
-    items: String
-  },
-  details: {
+  messages: {
     letters: String,
     quotes: String,
-    docs: Object //upload important files
+    docs: Object, //upload important files
+    videoPath: String,
   },
-  theChosen: {
-    //the <3 funeral-responsible
+  contact: {
     name: String,
     lastname: String,
     email: String,
-    adress: String,
-    phonenumber: String
+    phonenumber: String,
+    message: String,
   }
 });
 
