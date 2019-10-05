@@ -15,6 +15,15 @@ import Profile from "./components/Profile";
 import Explore from "./components/Explore";
 import ShareFuneralPlan from "./components/ShareFuneralPlan";
 import AddContact from "./components/AddContact";
+import Body from "./components/body/Body";
+import HandleBody from "./components/body/HandleBody";
+import Location from "./components/body/Location";
+import Messages from "./components/messages/Messages";
+import Quotes from "./components/messages/Quotes";
+import Letters from "./components/messages/Letters";
+import Documents from "./components/messages/Documents";
+import Event from "./components/event/Event";
+import Vibe from "./components/event/vibe/Vibe";
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -54,6 +63,19 @@ class App extends React.Component {
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/share-funeral-plans" component={ShareFuneralPlan} />
           <Route exact path="/share-funeral-plans/add-contact" component={AddContact} />
+          <Route path="/about" component={About} />
+          <Route path="/team" component={Team} />
+          {/* <Articles /> */}
+          <Route path="/body" component={Body} />
+          <Route exact path="/body/location" component={Location}></Route>
+          <Route exact path="/body/handlebody" component={HandleBody}></Route>
+          <Route exact path="/messages" component={Messages}></Route>
+          <Route exact path="/messages/letters" component={Letters}></Route>
+          <Route exact path="/messages/quotes" component={Quotes}></Route>
+          <Route exact path="/messages/documents" component={Documents}></Route>
+          <Route path="/funeral/event" component={Event} />
+          <Route exact path="/vibe" component={Vibe} />
+          {/* <Route exact path="/funeral" component={SideBar} /> */}
           <Route component={NotFound} />
         </Switch>
        

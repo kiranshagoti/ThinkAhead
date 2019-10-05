@@ -64,21 +64,22 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // ADD SESSION SETTINGS HERE:
 
-const session = require('express-session')
-const MongoStore = require("connect-mongo")(session)
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave:false,
-  seveUninitialized: false,
-  store: new MongoStore({mongooseConnection: mongoose.connection})
-})
-); 
+//I changed the function when I got an error "app.use is not a middelware function"
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 
 // USE passport.initialize() and passport.session() HERE:
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
@@ -90,13 +91,16 @@ app.locals.title = "Express - Generated with IronGenerator";
 const index = require("./routes/index");
 app.use("/", index);
 
+const funeral = require("./routes/funeral");
+app.use("/funeral", funeral);
+
 // const projectRoutes = require("./routes/project");
 // app.use("/api/projects", projectRoutes);
 
 // const taskRoutes = require("./routes/task");
 // app.use("/api/tasks", taskRoutes);
 
-const authRoutes = require ("./routes/auth"); 
-app.use("/api/auth", authRoutes); 
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
 
 module.exports = app;

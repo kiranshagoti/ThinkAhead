@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const uploadCloud = require("../config/cloudinary.js");
-const funeral = require("../models/Funeral");
+const Funeral = require("../models/Funeral");
+const cloudinary = require("cloudinary");
 
 const loginCheck = () => {
   return (req, res, next) => {
@@ -16,26 +17,90 @@ const loginCheck = () => {
   };
 };
 
-/* GET funeral page */
-router.get("/funeral", loginCheck(), (req, res, next) => {
-  funeral
-    .find()
+router.get("/funeral", (req, res) => {
+  Funeral.findOne({ user: req.user })
     .then(data => {
-      res.render("Funeral", { funeral: data, user: req.user });
+      res.json(data);
     })
-    .catch(err => console.log(err));
+    .catch(err => res.json(data));
 });
 
 //creates the funeral collection
-router.post("/funeral", uploadCloud("photo"), (req, res, next) => {
-  let { event, body, details, theChosen } = req.body;
-  funeral
-    .create({
-      event,
-      body,
-      details,
-      theChosen
-    })
+router.post("/", (req, res, next) => {
+  const newFuneral = req.body;
+  console.log(newFuneral);
+  let {
+    foods,
+    flowers,
+    dresscode,
+    sadMood,
+    happyMood,
+    tree,
+    eventLocation,
+    eventAdress,
+    invite,
+    musicTitle,
+    musicArtist,
+    spotify,
+    imgName,
+    imgPath,
+    originalName,
+    memorieStory,
+    burried,
+    cremated,
+    donate,
+    other,
+    cloths,
+    items,
+    religon,
+    sience,
+    finalRestAdress,
+    letters,
+    quotes,
+    docs,
+    videoPath,
+    constactName,
+    emailContact,
+    phonenumberContact,
+    messageContact,
+    userId
+  } = req.body;
+  Funeral.create({
+    foods,
+    flowers,
+    dresscode,
+    sadMood,
+    happyMood,
+    tree,
+    eventLocation,
+    eventAdress,
+    invite,
+    musicTitle,
+    musicArtist,
+    spotify,
+    imgName,
+    imgPath,
+    originalName,
+    memorieStory,
+    burried,
+    cremated,
+    donate,
+    other,
+    cloths,
+    items,
+    religon,
+    sience,
+    finalRestAdress,
+    letters,
+    quotes,
+    docs,
+    videoPath,
+    constactName,
+    emailContact,
+    phonenumberContact,
+    messageContact,
+    userId
+  })
     .then(post => {
       console.log("The funeral was added to the database", post);
     })
@@ -44,20 +109,6 @@ router.post("/funeral", uploadCloud("photo"), (req, res, next) => {
       next(err);
     });
 });
-
-
-router.post("/funeral", loginCheck(), (req, res, next) => {
-  const newFuneral = req.newFuneral;
-  const { event, body, details, theChosen } = req.body;
-  User.findOneAndUpdate(
-    { _id: user._id },
-    { $set: { event, body, details, theChosen } },
-    { new: true }
-  )
-    .then(updatedFuneral => {
-      console.log(updatedFuneral);
-    })
-    .catch(err => console.log(err));
-});
-
 module.exports = router;
+
+
