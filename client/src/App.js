@@ -16,6 +16,8 @@ import Messages from "./components/messages/Messages";
 import Quotes from "./components/messages/Quotes";
 import Letters from "./components/messages/Letters";
 import Documents from "./components/messages/Documents";
+import Event from "./components/event/Event";
+import Vibe from "./components/event/vibe/Vibe";
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -58,6 +60,9 @@ class App extends React.Component {
           <Route exact path="/messages/letters" component={Letters}></Route>
           <Route exact path="/messages/quotes" component={Quotes}></Route>
           <Route exact path="/messages/documents" component={Documents}></Route>
+          <Route path="/funeral/event" component={Event} />
+          <Route exact path="/vibe" component={Vibe} />
+          {/* <Route exact path="/funeral" component={SideBar} /> */}
           <Route component={NotFound} />
         </Switch>
       </div>
