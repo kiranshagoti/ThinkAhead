@@ -9,6 +9,8 @@ import { Route, Switch } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import SideBar from "./components/SideBar";
+import Event from "./components/event/Event";
+import Vibe from "./components/event/vibe/Vibe";
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -43,8 +45,9 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
-          <Articles />
-          <Route exact path="/funeral" component={SideBar} />
+          <Route path="/funeral/event" component={Event} />
+          <Route exact path="/vibe" component={Vibe} />
+          {/* <Route exact path="/funeral" component={SideBar} /> */}
           <Route component={NotFound} />
         </Switch>
       </div>
