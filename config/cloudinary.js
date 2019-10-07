@@ -12,7 +12,7 @@ cloudinary.config({
 var storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'image-folder',
-  allowedFormats: ['jpg', 'png'],
+  allowedFormats: ['jpg', 'png']
 });
 
 const uploadCloud = multer({

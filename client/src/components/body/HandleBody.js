@@ -1,26 +1,43 @@
 import React, { Component } from "react";
+import axios from 'axios'
 
 class HandleBody extends React.Component {
   state = {
     checked: false,
     value: "",
-    handleTheBody: "",
+    handleTheBody: '',
     otherInput: "",
     clothesInput: "",
-    treasureInput: ""
+    treasureInput: "",
+    howToBeBuried: '',
+    user: this.props.user
+    // funeral: this.props.funeral
   };
+
+  componentDidMount = () => {
+    console.log(this.props)
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState(
       {
         [name]: value
-      },
-      () => console.log(this.state.handleTheBody)
+      }
     );
   };
+  
+  handleSubmit = event => {
+  // using this.props. funeral will give us the id of the doc which need to be updated 
+  // using this.state give us the values which will need to be chnaged out of the input field 
+  // project management 
+  // using  axious api  call to UPDATE the data 
+  //  create a route which handle the update!! ( look project management lab)
+
+  }
 
   render() {
+    console.log('FUNERALS',this.props.funeral)
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -30,6 +47,7 @@ class HandleBody extends React.Component {
             type="checkbox"
             onChange={this.handleInputChange}
             value="burried"
+            checked={this.state.howToBeBuried === 'burried'}
           />
         </label>
         <label>
@@ -68,6 +86,10 @@ class HandleBody extends React.Component {
             onChange={this.handleInputChange}
           />
         </label>
+
+
+
+
         <br />
         <label>
           What do you want to wear?

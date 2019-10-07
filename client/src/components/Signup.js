@@ -1,28 +1,23 @@
 import React, { Component } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { signup } from "../services/api";
-
 export default class Signup extends Component {
   state = {
     username: "",
     password: "",
     message: ""
   };
-
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
     });
   };
-
   handleSubmit = event => {
     event.preventDefault();
-
     const { username, password } = this.state;
-
     signup(username, password).then(data => {
+      console.log(data);
       if (data.message) {
         this.setState({
           message: data.message,
@@ -32,12 +27,12 @@ export default class Signup extends Component {
       } else {
         // successfully signed up
         // update the state for the parent component
+        console.log("DATA from SIGNUP", data);
         this.props.setUser(data);
-        this.props.history.push("/projects");
+        this.props.history.push("/welcome");
       }
     });
   };
-
   render() {
     return (
       <>
