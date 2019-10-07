@@ -9,6 +9,7 @@ import { Route, Switch } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import SideBar from "./components/SideBar";
+import FormUserComponent from './components/FormUserComponent'
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -30,6 +31,15 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <Switch>
+
+        {/*  */}
+        <Route
+            exact
+            path="/testform"
+            component={FormUserComponent}
+          />
+        {/*  */}
+
           <Route
             exact
             path="/signup"
@@ -43,7 +53,6 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
-          <Articles />
           <Route exact path="/funeral" component={SideBar} />
           <Route component={NotFound} />
         </Switch>
