@@ -40,7 +40,7 @@ export default class Navbar extends Component {
                 </ul>
                 </nav>
                 </div>
-            </div >
+            </div>
         )
     }
 }

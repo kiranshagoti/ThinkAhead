@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Form, Label } from "react-bootstrap";
+import { Form, Label, Button } from "react-bootstrap";
 
 export default class Vibe extends Component {
   state = {
@@ -10,10 +10,11 @@ export default class Vibe extends Component {
     dresscode: "",
     flowers: ""
   };
+
   getData = () => {
     const id = this.props.match.params.id;
     axios
-      .get(`/funeral/${id}`)
+      .get("/event/vibe")
       .then(response => {
         if (response.data) {
           this.setState({
@@ -39,15 +40,36 @@ export default class Vibe extends Component {
   };
 
   handleChange = event => {
-    const { name, value } = event.target;
-    //const name = "food"
-    //const name = "dresscode"
-    this.setState(
-      {
-        [name]: value
-      },
-      () => console.log("updated state", this.state)
-    );
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    axios
+      .post("/", {
+        sadMood: this.state.sadMood,
+        happyMood: this.state.happyMood,
+        food: this.state.food,
+        dresscode: this.state.dresscode,
+        flowers: this.state.flowers
+      })
+      .then(() => {
+        this.setState({
+          sadMood: "",
+          happyMood: "",
+          food: "",
+          dresscode: "",
+          flowers: ""
+        });
+        this.state.getData();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -84,6 +106,8 @@ export default class Vibe extends Component {
               placeholder="Let your planer know what flowers you love the most"
             />
           </Form.Group>
+
+          <Button type="submit">Update funeral</Button>
         </Form>
       </div>
     );

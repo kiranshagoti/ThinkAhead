@@ -14,7 +14,7 @@ const funeralSchema = new Schema({
   // where: {
   eventLocation: String,
   eventAdress: String,
-  invite: Array,
+  invite: String,
   // },
   // music: {
   musicTitle: String,
@@ -35,7 +35,7 @@ const funeralSchema = new Schema({
   tree: Boolean,
   donate: Boolean,
   other: String,
-  cloths: String,
+  clothes: String,
   items: String,
   // },
   religon: String,
@@ -58,6 +58,8 @@ const funeralSchema = new Schema({
   emailContact: String,
   phonenumberContact: String,
   messageContact: String,
+  
+  
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User"

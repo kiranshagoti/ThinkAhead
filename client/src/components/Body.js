@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-import App from "../../App";
-import Navbar from "../Navbar";
+import App from "../App";
+import Navbar from "./Navbar";
 import { Link, Route } from "react-router-dom";
-import HandleBody from "./HandleBody";
-import Location from "./Location";
 
 export default class Body extends Component {
+  state = {
+    user: this.props.user
+  };
   render() {
+    console.log("USER FROM BODY COMP.", this.state.user);
     return (
       <div>
-        <Route exact path="/body/handlebody" component={HandleBody}></Route>
-        <Link to="/body/handlebody">
+        {/* <Route exact path="/body/handlebody" component={HandleBody}></Route> */}
+        <Link to="/handlebody">
           <div>Handle Body</div>
         </Link>
-        <Route exact path="/body/location" component={Location}></Route>
-        <Link to="/body/location">
+        {/* <Route exact path="/body/location" component={Location}></Route> */}
+        <Link to="/location">
           <div>Location</div>
         </Link>
         <div>

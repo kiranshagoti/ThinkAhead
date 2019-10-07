@@ -17,7 +17,7 @@ const passport = require("passport");
 // const session       = require('express-session');
 // const passport      = require('passport');
 
-// require('./configs/passport');
+require("./config/passport");
 
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
@@ -70,9 +70,10 @@ const MongoStore = require("connect-mongo")(session);
 //I changed the function when I got an error "app.use is not a middelware function"
 app.use(
   session({
+    cookie: { maxAge: 24 * 60 * 60 },
     secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
