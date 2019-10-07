@@ -10,6 +10,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import SideBar from "./components/SideBar";
 import FormUserComponent from './components/FormUserComponent'
+import Body from './components/Body'
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -23,10 +24,11 @@ class App extends React.Component {
   setUser = user => {
     this.setState({
       user: user
-    });
+    },() => console.log('USER IN STATE :', this.state.user));
   };
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <Navbar />
@@ -50,7 +52,10 @@ class App extends React.Component {
             path="/login"
             render={props => <Login setUser={this.setUser} {...props} />}
           />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
+          <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
+
+
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
           <Route exact path="/funeral" component={SideBar} />

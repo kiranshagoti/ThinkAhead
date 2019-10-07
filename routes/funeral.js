@@ -60,4 +60,10 @@ router.post("/funeral", loginCheck(), (req, res, next) => {
     .catch(err => console.log(err));
 });
 
+router.post("/funeral", (req, res) => {
+  funeral.create({
+    
+  })
+})
+
 module.exports = router;

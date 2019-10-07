@@ -21,9 +21,9 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { username, password } = this.state;
+    // const { username, password } = this.state;
 
-    login(username, password).then(data => {
+    login(this.state.username, this.state.password).then(data => {
       if (data.message) {
         this.setState({
           message: data.message,
@@ -34,7 +34,7 @@ export default class Login extends Component {
         // successfully logged in
         // update the state for the parent component
         this.props.setUser(data);
-        this.props.history.push("/projects");
+        this.props.history.push("/");
       }
     });
   };
