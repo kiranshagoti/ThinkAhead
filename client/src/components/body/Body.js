@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import App from "../App";
-import Navbar from "./Navbar";
+import App from "../../App";
+import Navbar from "../Navbar";
 import { Link, Route } from "react-router-dom";
-<<<<<<< HEAD:client/src/components/body/Body.js
 import HandleBody from "./HandleBody";
 import Location from "./Location";
 import axios from 'axios'
@@ -12,31 +11,24 @@ export default class Body extends Component {
     user:this.props.user,
     funeral:null
   }
-  conponentDidMount = () => {
+
+  componentDidMount = () => {
     axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
-      console.log(response.data)
+      console.log('AXIOS GET FUNERAL:', response.data)
+      this.setState({
+        funeral:response.data
+      })
     }).catch(err => console.log(err))
     
-    // set state 
-  }
-=======
 
-export default class Body extends Component {
-  state = {
-    user: this.props.user
-  };
->>>>>>> 8faf7b1084cbe8297a631deab601de592b14483e:client/src/components/Body.js
+  }
   render() {
-    console.log("USER FROM BODY COMP.", this.state.user);
+    this.state.user && console.log("USER FROM BODY COMP.", this.state.user);
+    this.state.funeral && console.log("FUNERAL FROM BODY COMP.", this.state.funeral);
     return (
       <div>
-<<<<<<< HEAD:client/src/components/body/Body.js
-        <Route exact path="/body/handlebody" render={props => <HandleBody user={this.state.user} {...props}/>}></Route>
+        <Route exact path="/body/handlebody" render={() => <HandleBody user={this.state.user} funeral={this.state.funeral}/>}></Route>
         <Link to="/body/handlebody">
-=======
-        {/* <Route exact path="/body/handlebody" component={HandleBody}></Route> */}
-        <Link to="/handlebody">
->>>>>>> 8faf7b1084cbe8297a631deab601de592b14483e:client/src/components/Body.js
           <div>Handle Body</div>
         </Link>
         {/* <Route exact path="/body/location" component={Location}></Route> */}

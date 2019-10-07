@@ -18,9 +18,9 @@ const loginCheck = () => {
   };
 };
 
-router.get("/funeral/:id", (req, res) => {
+router.get("/:id", (req, res) => {
 
-  const id = req.match.params.id
+  const id = req.params.id
   console.log('ID FROM ROUTER',id)
   Funeral.findOne({_id :id})
     .then(data => {

@@ -18,12 +18,12 @@ import AddContact from "./components/AddContact";
 import Body from "./components/body/Body";
 import HandleBody from "./components/body/HandleBody";
 import Location from "./components/body/Location";
-import Messages from "./components/messages/Messages";
-import Quotes from "./components/messages/Quotes";
-import Letters from "./components/messages/Letters";
-import Documents from "./components/messages/Documents";
+import Messages from "./components/Messages";
+import Quotes from "./components/Quotes";
+import Letters from "./components/Letters";
+import Documents from "./components/Documents";
 import Event from "./components/event/Event";
-import Vibe from "./components/event/vibe/Vibe";
+import Vibe from "./components/Vibe";
 import FormUserComponent from './components/FormUserComponent'
 
 
@@ -37,14 +37,12 @@ class App extends React.Component {
   };
 
   setUser = user => {
-    console.log("DATA FROM SetUser()", user);
     this.setState({
       user: user
-    },() => console.log('USER IN STATE :', this.state.user));
+    });
   };
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <Switch>
