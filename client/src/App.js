@@ -37,6 +37,7 @@ class App extends React.Component {
   };
 
   setUser = user => {
+    console.log("DATA FROM SetUser()", user);
     this.setState({
       user: user
     },() => console.log('USER IN STATE :', this.state.user));
@@ -46,7 +47,6 @@ class App extends React.Component {
     console.log(this.state)
     return (
       <div className="App">
-      
         <Switch>
 
         {/*  */}
@@ -73,8 +73,16 @@ class App extends React.Component {
           <Route exact path="/team" component={Team} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/explore" component={Explore} />
-          <Route exact path="/share-funeral-plans" component={ShareFuneralPlan} />
-          <Route exact path="/share-funeral-plans/add-contact" component={AddContact} />
+          <Route
+            exact
+            path="/share-funeral-plans"
+            component={ShareFuneralPlan}
+          />
+          <Route
+            exact
+            path="/share-funeral-plans/add-contact"
+            component={AddContact}
+          />
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
           {/* <Articles /> */}
@@ -97,7 +105,6 @@ class App extends React.Component {
           {/* <Route exact path="/funeral" component={SideBar} /> */}
           <Route component={NotFound} />
         </Switch>
-       
       </div>
     );
   }

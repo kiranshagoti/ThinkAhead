@@ -6,11 +6,11 @@ import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   input: {
-    display: 'none',
-  },
+    display: "none"
+  }
 }));
 
 export default function MainPlan() {

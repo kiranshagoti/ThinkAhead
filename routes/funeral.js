@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const uploadCloud = require("../config/cloudinary.js");
+//const uploadCloud = require("../config/cloudinary.js");
 const Funeral = require("../models/Funeral");
 const cloudinary = require("cloudinary");
 const User = require('../models/User')
@@ -74,12 +74,9 @@ router.post("/", (req, res, next) => {
       }).catch(err => console.log(err))
     })
     .catch(err => {
-      console.log("err");
-      next(err);
+      res.json(err);
     });
 });
-module.exports = router;
-
 
 router.post("/funeral", loginCheck(), (req, res, next) => {
   const newFuneral = req.newFuneral;

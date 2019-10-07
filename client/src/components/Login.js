@@ -9,15 +9,12 @@ export default class Login extends Component {
     password: "",
     message: ""
   };
-
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
     });
   };
-
   handleSubmit = event => {
     event.preventDefault();
 
@@ -39,7 +36,6 @@ export default class Login extends Component {
       }
     });
   };
-
   render() {
     return (
       <>
@@ -75,3 +71,5 @@ export default class Login extends Component {
     );
   }
 }
+
+

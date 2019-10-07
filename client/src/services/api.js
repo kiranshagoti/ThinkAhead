@@ -8,7 +8,7 @@ const signup = (username, password) => {
       return response.data;
     })
     .catch(err => {
-      return err.response.data;
+      return err;
     });
 };
 
@@ -19,7 +19,7 @@ const login = (username, password) => {
       return response.data;
     })
     .catch(err => {
-      return err.response.data;
+      return err;
     });
 };
 
