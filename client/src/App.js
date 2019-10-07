@@ -24,6 +24,8 @@ import Letters from "./components/messages/Letters";
 import Documents from "./components/messages/Documents";
 import Event from "./components/event/Event";
 import Vibe from "./components/event/vibe/Vibe";
+import FormUserComponent from './components/FormUserComponent'
+
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -37,14 +39,24 @@ class App extends React.Component {
   setUser = user => {
     this.setState({
       user: user
-    });
+    },() => console.log('USER IN STATE :', this.state.user));
   };
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
       
         <Switch>
+
+        {/*  */}
+        <Route
+            exact
+            path="/welcome"
+            component={FormUserComponent}
+          />
+        {/*  */}
+
           <Route
             exact
             path="/signup"
@@ -55,7 +67,7 @@ class App extends React.Component {
             path="/login"
             render={props => <Login setUser={this.setUser} {...props} />}
           />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={(props)=><Home user={this.state.user} {...props}/>}/>
           <Route exact path="/legal" component={Legal} />
           <Route exact path="/about" component={About} />
           <Route exact path="/team" component={Team} />
@@ -66,7 +78,7 @@ class App extends React.Component {
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
           {/* <Articles /> */}
-          <Route path="/body" component={Body} />
+          <Route path="/body" render={props => <Body user={this.state.user} {...props}/>} />
           <Route exact path="/body/location" component={Location}></Route>
           <Route exact path="/body/handlebody" component={HandleBody}></Route>
           <Route exact path="/messages" component={Messages}></Route>
@@ -75,6 +87,13 @@ class App extends React.Component {
           <Route exact path="/messages/documents" component={Documents}></Route>
           <Route path="/funeral/event" component={Event} />
           <Route exact path="/vibe" component={Vibe} />
+          {/* <Route exact path="/funeral" component={SideBar} /> */}
+          <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
+          <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
+
+
+          <Route path="/about" component={About} />
+          <Route path="/team" component={Team} />
           {/* <Route exact path="/funeral" component={SideBar} /> */}
           <Route component={NotFound} />
         </Switch>

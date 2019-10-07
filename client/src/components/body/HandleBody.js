@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios'
 
 class HandleBody extends React.Component {
   state = {
@@ -7,8 +8,12 @@ class HandleBody extends React.Component {
     handleTheBody: "",
     otherInput: "",
     clothesInput: "",
-    treasureInput: ""
+    treasureInput: "",
+    user: this.props.user,
+    funeral:null
   };
+
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -21,6 +26,7 @@ class HandleBody extends React.Component {
   };
 
   render() {
+    console.log('FUNERALS',this.state.funeral)
     return (
       <form onSubmit={this.handleSubmit}>
         <label>

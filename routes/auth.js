@@ -30,7 +30,15 @@ router.post("/signup", (req, res) => {
 
       return User.create({ username: username, password: hash }).then(
         dbUser => {
-          res.json(dbUser);
+
+          req.login(dbUser, err => {
+            if (err) {
+              return res
+                .status(500)
+                .json({ message: "Error while attempting to login" });
+            }
+            return res.json(dbUser);
+          });
         }
       );
     })
@@ -41,6 +49,7 @@ router.post("/signup", (req, res) => {
 
 // POST /api/auth/login
 router.post("/login", (req, res) => {
+  console.log('LOGIN NOT GONAWORK')
   passport.authenticate("local", (err, user) => {
     if (err) {
       return res.status(500).json({ message: "Error while authenticating" });
@@ -67,6 +76,7 @@ router.delete("/logout", (req, res) => {
 
 // checks if the user has an active session
 router.get("/loggedin", (req, res) => {
+  console.log('HELLO LOGGEDIN', req.user)
   res.json(req.user);
 });
 
