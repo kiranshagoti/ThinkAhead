@@ -16,7 +16,7 @@ const funeralSchema = new Schema({
       cremated: Boolean,
       donate: Boolean,
       other: String,
-      cloths: String,
+      clothes: String,
       items: String,
       },
       religon: String,  
@@ -57,6 +57,8 @@ const funeralSchema = new Schema({
     message: String,
   }
 });
+
+
 
 const Funeral = mongoose.model("Funeral", funeralSchema);
 
