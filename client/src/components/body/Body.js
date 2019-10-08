@@ -13,6 +13,7 @@ export default class Body extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.state.user)
     axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
       console.log('AXIOS GET FUNERAL:', response.data)
       this.setState({
@@ -37,8 +38,8 @@ export default class Body extends Component {
         </Link>
         <div>
           <h2>Plan More...</h2>
-          <button>coffin icon </button>
-          <button>sience icon</button>
+          <button>Coffin icon </button>
+          <button>Sience icon</button>
         </div>
       </div>
     );

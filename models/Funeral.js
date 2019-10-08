@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const funeralSchema = new Schema({
 
-  foods: String,
+  food: String,
   flowers: String,
-  dresscode: String,
+  dressCode: String,
   // happyMood: Boolean,
   // sadMood: Boolean,
 
@@ -34,7 +34,7 @@ const funeralSchema = new Schema({
   clothes: String,
   items: String,
   
-  religon: String,
+  religion: String,
   sience: String,
   
   finalRestAdress: String,
@@ -42,10 +42,10 @@ const funeralSchema = new Schema({
   letters: String,
   letterTo: String,
   quotes: String,
-  docs: Object, //upload important files
+  documents: Object, //upload important files
   videoPath: String,
 
-  constactName: String,
+  contactName: String,
   emailContact: String,
   phonenumberContact: String,
   messageContact: String,

@@ -93,14 +93,14 @@ class App extends React.Component {
           <Route exact path="/messages/documents" component={Documents}></Route>
           <Route path="/funeral/event" component={Event} />
           <Route exact path="/vibe" component={Vibe} />
-          {/* <Route exact path="/funeral" component={SideBar} /> */}
+          
           <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
           <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
 
 
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
-          {/* <Route exact path="/funeral" component={SideBar} /> */}
+          
           <Route component={NotFound} />
         </Switch>
       </div>
