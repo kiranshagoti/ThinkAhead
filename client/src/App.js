@@ -24,8 +24,7 @@ import Letters from "./components/Letters";
 import Documents from "./components/Documents";
 import Event from "./components/event/Event";
 import Vibe from "./components/Vibe";
-import FormUserComponent from './components/FormUserComponent'
-
+import FormUserComponent from "./components/FormUserComponent";
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -46,14 +45,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-
-        {/*  */}
-        <Route
-            exact
-            path="/welcome"
-            component={FormUserComponent}
-          />
-        {/*  */}
+          {/*  */}
+          <Route exact path="/welcome" component={FormUserComponent} />
+          {/*  */}
 
           <Route
             exact
@@ -65,7 +59,11 @@ class App extends React.Component {
             path="/login"
             render={props => <Login setUser={this.setUser} {...props} />}
           />
-          <Route exact path="/" render={(props)=><Home user={this.state.user} {...props}/>}/>
+          <Route
+            exact
+            path="/"
+            render={props => <Home user={this.state.user} {...props} />}
+          />
           <Route exact path="/legal" component={Legal} />
           <Route exact path="/about" component={About} />
           <Route exact path="/team" component={Team} />
@@ -84,23 +82,37 @@ class App extends React.Component {
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
           {/* <Articles /> */}
-          <Route path="/body" render={props => <Body user={this.state.user} {...props}/>} />
+          <Route
+            path="/body"
+            render={props => <Body user={this.state.user} {...props} />}
+          />
           <Route exact path="/body/location" component={Location}></Route>
           <Route exact path="/body/handlebody" component={HandleBody}></Route>
-          <Route exact path="/messages" component={Messages}></Route>
-          <Route exact path="/messages/letters" component={Letters}></Route>
+          <Route
+            exact
+            path="/messages"
+            render={props => <Messages user={this.state.user} {...props} />}
+          ></Route>
+          <Route exact path="/messages/letters" render={props => <Letters user={this.state.user} {...props} />}></Route>
           <Route exact path="/messages/quotes" component={Quotes}></Route>
           <Route exact path="/messages/documents" component={Documents}></Route>
           <Route path="/funeral/event" component={Event} />
           <Route exact path="/vibe" component={Vibe} />
-          
-          <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
-          <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
 
+          <Route
+            exact
+            path="/"
+            render={props => <Home user={this.state.user} {...props} />}
+          />
+          <Route
+            exact
+            path="/body"
+            render={props => <Body user={this.state.user} {...props} />}
+          />
 
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
-          
+
           <Route component={NotFound} />
         </Switch>
       </div>

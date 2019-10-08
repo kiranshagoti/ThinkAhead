@@ -6,7 +6,6 @@
     "start": "node ./bin/www",
     "dev": "DEBUG=thinkahead:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
-    
   },
   "dependencies": {
     "@material-ui/core": "^4.5.0",
