@@ -32,7 +32,7 @@ const funeralSchema = new Schema({
 
   other: String,
   clothes: String,
-  items: String,
+  treasureInput: String,
   
   religion: String,
   sience: String,
