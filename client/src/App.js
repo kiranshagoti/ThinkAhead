@@ -24,7 +24,8 @@ import Letters from "./components/Letters";
 import Documents from "./components/Documents";
 import Event from "./components/event/Event";
 import Vibe from "./components/Vibe";
-import FormUserComponent from './components/FormUserComponent'
+import FormUserComponent from './components/FormUserComponent';
+import Settings from "./components/Settings";
 
 
 const NotFound = () => {
@@ -45,6 +46,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Navbar />
         <Switch>
 
         {/*  */}
@@ -83,6 +85,7 @@ class App extends React.Component {
           />
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
+          <Route path="/settings" component={Settings} />
           {/* <Articles /> */}
           <Route path="/body" render={props => <Body user={this.state.user} {...props}/>} />
           <Route exact path="/body/location" component={Location}></Route>
@@ -98,11 +101,11 @@ class App extends React.Component {
           <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
 
 
-          <Route path="/about" component={About} />
-          <Route path="/team" component={Team} />
+        
           
           <Route component={NotFound} />
         </Switch>
+        <BottomNavbar />
       </div>
     );
   }

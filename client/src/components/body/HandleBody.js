@@ -7,7 +7,7 @@ class HandleBody extends React.Component {
     value: "",
     handleTheBody: '',
     other: "",
-    dressCode: "",
+    clothes: "",
     treasureInput: "",
     howToBeBuried: '',
     user: this.props.user,
@@ -39,7 +39,7 @@ class HandleBody extends React.Component {
       value: "",
       handleTheBody: this.state.handleTheBody,
       other: this.state.other,
-      dressCode: this.state.dressCode,
+      clothes: this.state.clothes,
       treasureInput: this.state.treasureInput,
       howToBeBuried: this.state.howToBeBuried,
       user: this.props.user
@@ -50,7 +50,7 @@ class HandleBody extends React.Component {
     value: "",
     handleTheBody: '',
     other: "",
-    dressCode: "",
+    clothes: "",
     treasureInput: "",
     howToBeBuried: '',
     user: this.props.user
@@ -68,15 +68,15 @@ class HandleBody extends React.Component {
     console.log('FUNERALS',this.props.funeral)
     return (
       <form onSubmit={this.handleSubmit}>
-        <select name="howToBeBuried"  >
+        {/* <select name="howToBeBuried"  >
           <option value="burried" selected={this.props.funeral.howToBeBuried === 'burried'}>Burried</option>
           <option value="cremation" selected={this.props.funeral.howToBeBuried === 'cremation'}>Cremation</option>
           <option value="green" selected={this.props.funeral.howToBeBuried === 'green'}>Tree</option>
-          <option value="donate" selected={this.props.funeral.howToBeBuried === 'donate'}>Donate</option>
-        </select>
-        {/* <label>
+          <option value="donate" selected={this.props.funeral.howToBeBuried === 'donate'}>Donate</option> */}
+        {/* </select> */}
+        <label>
           burial
-          <input
+          <input  
             name="checked"
             type="checkbox"
             onChange={this.handleInputChange}
@@ -119,7 +119,7 @@ class HandleBody extends React.Component {
             value={this.state.otherInput}
             onChange={this.handleInputChange}
           />
-        </label> */}
+        </label>
 
 
 
@@ -128,9 +128,9 @@ class HandleBody extends React.Component {
         <label>
           What do you want to wear?
           <input
-            name="dressCode"
+            name="clothes"
             type="text"
-            value={this.state.dressCode}
+            value={this.state.clothes}
             onChange={this.handleInputChange}
           />
         </label>
