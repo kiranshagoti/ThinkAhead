@@ -11,7 +11,7 @@ const funeralSchema = new Schema({
   kindOfVibe:String,
 
   eventLocation: String,
-  eventAdress: String,
+  eventAddress: String,
   invite: Array,
  
   musicTitle: String,
@@ -32,12 +32,12 @@ const funeralSchema = new Schema({
 
   other: String,
   clothes: String,
-  items: String,
+  treasureInput: String,
   
   religion: String,
-  sience: String,
+  science: String,
   
-  finalRestAdress: String,
+  finalRestAddress: String,
 
   letters: String,
   letterTo: String,

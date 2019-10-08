@@ -9,6 +9,10 @@ class HandleBody extends React.Component {
     dressCode: (this.props.funeral.dressCode || ""),
     items: (this.props.funeral.items || ""),
     howToBeBuried: (this.props.funeral.howToBeBuried || ""),
+    other: "",
+    clothes: "",
+    treasureInput: "",
+    howToBeBuried: '',
     user: this.props.user,
     funeral: this.props.funeral
   };
@@ -58,6 +62,24 @@ class HandleBody extends React.Component {
     // user: this.props.user
     //   });
     //   // updates the parent's component's state, which causes new props to be passed to the <ProjectList/> component
+      other: this.state.other,
+      clothes: this.state.clothes,
+      treasureInput: this.state.treasureInput,
+      howToBeBuried: this.state.howToBeBuried,
+      user: this.props.user
+    })
+    .then(() => {
+      this.setState({
+        checked: true,
+    value: "",
+    handleTheBody: '',
+    other: "",
+    clothes: "",
+    treasureInput: "",
+    howToBeBuried: '',
+    user: this.props.user
+      });
+      // updates the parent's component's state, which causes new props to be passed to the <ProjectList/> component
      
     // })
     // .catch(err => {
@@ -78,7 +100,7 @@ class HandleBody extends React.Component {
         </select>
         {/* <label>
           burial
-          <input
+          <input  
             name="checked"
             type="checkbox"
             onChange={this.handleInputChange}
@@ -121,7 +143,7 @@ class HandleBody extends React.Component {
             value={this.state.otherInput}
             onChange={this.handleInputChange}
           />
-        </label> */}
+        </label>
 
 
 
@@ -130,9 +152,9 @@ class HandleBody extends React.Component {
         <label>
           What do you want to wear?
           <input
-            name="dressCode"
+            name="clothes"
             type="text"
-            value={this.state.dressCode}
+            value={this.state.clothes}
             onChange={this.handleInputChange}
           />
         </label>

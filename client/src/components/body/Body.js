@@ -17,11 +17,9 @@ export default class Body extends Component {
     axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
       console.log('AXIOS GET FUNERAL:', response.data)
       this.setState({
-        funeral:response.data
+        funeral: response.data
       })
     }).catch(err => console.log(err))
-    
-
   }
   updateFuneral = (args) => {
     console.log('ARGS FOR BODY AXIOS:', args)
@@ -36,6 +34,19 @@ export default class Body extends Component {
       console.log(err);
     });
   }
+
+    // updateFuneral = (...args)=> {
+    //   axios.post(`/updateFuneral/${this.state.funeral._id}`{ ...args })
+    //     .then(response => {
+    //     console.log(response.data)
+    //     })
+    //   .catch(err => console.log(err)
+    // });
+
+
+
+
+  
   render() {
     this.state.user && console.log("USER FROM BODY COMP.", this.state.user);
     this.state.funeral && console.log("FUNERAL FROM BODY COMP.", this.state.funeral);
@@ -45,14 +56,15 @@ export default class Body extends Component {
         <Link to="/body/handlebody">
           <div>Handle Body</div>
         </Link>
-        {/* <Route exact path="/body/location" component={Location}></Route> */}
+        <Route exact path="/body/location" component={Location}></Route>
         <Link to="/location">
           <div>Location</div>
         </Link>
         <div>
           <h2>Plan More...</h2>
+          <button>Religion icon</button>
           <button>Coffin icon </button>
-          <button>Sience icon</button>
+          <button>Science icon</button>
         </div>
       </div>
     );
