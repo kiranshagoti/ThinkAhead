@@ -4,10 +4,13 @@ import axios from 'axios'
 class HandleBody extends React.Component {
   state = {
     checked: false,
-    value: "",
     handleTheBody: '',
+    otherInput: "",
+    dressCode: (this.props.funeral.dressCode || ""),
+    items: (this.props.funeral.items || ""),
+    howToBeBuried: (this.props.funeral.howToBeBuried || ""),
     other: "",
-    dressCode: "",
+    clothes: "",
     treasureInput: "",
     howToBeBuried: '',
     user: this.props.user,
@@ -15,6 +18,7 @@ class HandleBody extends React.Component {
   };
 
   componentDidMount = () => {
+  
     console.log(this.props)
   }
 
@@ -28,18 +32,38 @@ class HandleBody extends React.Component {
   };
   
   handleSubmit = event => {
-  // using this.props. funeral will give us the id of the doc which need to be updated 
-  // using this.state give us the values which will need to be chnaged out of the input field 
-  // project management 
-  // using  axious api  call to UPDATE the data 
-  //  create a route which handle the update!! ( look project management lab)
+    
     event.preventDefault();
-    axios.post("/funeral", { 
-      checked: false,
-      value: "",
+    this.props.updateFuneral({
       handleTheBody: this.state.handleTheBody,
+        otherInput: this.state.otherInput,
+        dressCode: this.state.dressCode,
+        items: this.state.items,
+        howToBeBuried: this.state.howToBeBuried
+      })
+
+    // axios.post(`/funeral/${this.props.user.funeral}`, { 
+    //   handleTheBody: this.state.handleTheBody,
+    //   otherInput: this.state.otherInput,
+    //   dressCode: this.state.dressCode,
+    //   treasureInput: this.state.treasureInput,
+    //   howToBeBuried: this.state.howToBeBuried,
+    // })
+    // .then(response => {
+    //   console.log(response.data)
+    //   this.setState({
+    //     checked: true,
+    // value: "",
+    // handleTheBody: '',
+    // otherInput: "",
+    // dressCode: "",
+    // treasureInput: "",
+    // howToBeBuried: '',
+    // user: this.props.user
+    //   });
+    //   // updates the parent's component's state, which causes new props to be passed to the <ProjectList/> component
       other: this.state.other,
-      dressCode: this.state.dressCode,
+      clothes: this.state.clothes,
       treasureInput: this.state.treasureInput,
       howToBeBuried: this.state.howToBeBuried,
       user: this.props.user
@@ -50,17 +74,17 @@ class HandleBody extends React.Component {
     value: "",
     handleTheBody: '',
     other: "",
-    dressCode: "",
+    clothes: "",
     treasureInput: "",
     howToBeBuried: '',
     user: this.props.user
       });
       // updates the parent's component's state, which causes new props to be passed to the <ProjectList/> component
      
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // });
 };
   
 
@@ -69,14 +93,14 @@ class HandleBody extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <select name="howToBeBuried"  >
-          <option value="burried" selected={this.props.funeral.howToBeBuried === 'burried'}>Burried</option>
-          <option value="cremation" selected={this.props.funeral.howToBeBuried === 'cremation'}>Cremation</option>
-          <option value="green" selected={this.props.funeral.howToBeBuried === 'green'}>Tree</option>
-          <option value="donate" selected={this.props.funeral.howToBeBuried === 'donate'}>Donate</option>
+          <option value="Classic funeral" selected={this.props.funeral && this.props.funeral.howToBeBuried === 'Classic funeral'}>Classic funeral</option>
+          <option value="Cremation" selected={this.props.funeral && this.props.funeral.howToBeBuried === 'Cremation'}>Cremation</option>
+          <option value="Tree" selected={this.props.funeral && this.props.funeral.howToBeBuried === 'Tree'}>Tree</option>
+          <option value="Science" selected={this.props.funeral && this.props.funeral.howToBeBuried === 'Science'}>Donate</option>
         </select>
         {/* <label>
           burial
-          <input
+          <input  
             name="checked"
             type="checkbox"
             onChange={this.handleInputChange}
@@ -119,7 +143,7 @@ class HandleBody extends React.Component {
             value={this.state.otherInput}
             onChange={this.handleInputChange}
           />
-        </label> */}
+        </label>
 
 
 
@@ -128,18 +152,18 @@ class HandleBody extends React.Component {
         <label>
           What do you want to wear?
           <input
-            name="dressCode"
+            name="clothes"
             type="text"
-            value={this.state.dressCode}
+            value={this.state.clothes}
             onChange={this.handleInputChange}
           />
         </label>
         <label>
           Do you want to bring any treasures with you?
           <input
-            name="treasureInput"
+            name="items"
             type="text"
-            value={this.state.treasureInput}
+            value={this.state.items}
             onChange={this.handleInputChange}
           />
         </label>

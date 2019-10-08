@@ -24,7 +24,11 @@ import Letters from "./components/Letters";
 import Documents from "./components/Documents";
 import Event from "./components/event/Event";
 import Vibe from "./components/Vibe";
-import FormUserComponent from "./components/FormUserComponent";
+import FormUserComponent from './components/FormUserComponent';
+import Settings from "./components/Settings";
+import Playlist from "./components/event/Playlist";
+import AddSong from "./components/event/AddSong";
+
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -44,6 +48,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Navbar />
         <Switch>
           {/*  */}
           <Route exact path="/welcome" component={FormUserComponent} />
@@ -81,6 +86,7 @@ class App extends React.Component {
           />
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
+          <Route path="/settings" component={Settings} />
           {/* <Articles /> */}
           <Route
             path="/body"
@@ -98,6 +104,11 @@ class App extends React.Component {
           <Route exact path="/messages/documents" component={Documents}></Route>
           <Route path="/funeral/event" component={Event} />
           <Route exact path="/vibe" component={Vibe} />
+          <Route exact path="/event/playlist" component={Playlist}></Route>
+          <Route exact path="/event/playlist/AddSong" component={AddSong}></Route>
+          
+          <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
+          <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
 
           <Route
             exact
@@ -115,6 +126,7 @@ class App extends React.Component {
 
           <Route component={NotFound} />
         </Switch>
+        <BottomNavbar />
       </div>
     );
   }
