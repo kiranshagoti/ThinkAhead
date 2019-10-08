@@ -29,7 +29,7 @@ export default class Signup extends Component {
         // update the state for the parent component
         console.log("DATA from SIGNUP", data);
         this.props.setUser(data);
-        this.props.history.push("/");
+        this.props.history.push("/welcome");
       }
     });
   };

@@ -8,16 +8,14 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-const passport = require("passport");
 
 // WHEN INTRODUCING USERS DO THIS:
 // INSTALL THESE DEPENDENCIES: passport-local, passport, bcryptjs, express-session
 // AND UN-COMMENT OUT FOLLOWING LINES:
 
-// const session       = require('express-session');
-// const passport      = require('passport');
+const passport      = require('passport');
 
-require("./config/passport");
+require('./config/passport');
 
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
@@ -67,16 +65,14 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-//I changed the function when I got an error "app.use is not a middelware function"
-app.use(
-  session({
-    cookie: { maxAge: 24 * 60 * 60 },
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  })
-);
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave:false,
+  seveUninitialized: false,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
+})
+); 
 
 // USE passport.initialize() and passport.session() HERE:
 app.use(passport.initialize());

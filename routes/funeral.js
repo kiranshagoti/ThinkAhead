@@ -2,191 +2,101 @@ const express = require("express");
 const router = express.Router();
 //const uploadCloud = require("../config/cloudinary.js");
 const Funeral = require("../models/Funeral");
-//const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary");
+const User = require('../models/User')
 
-router.post("/", (req, res) => {
-  const {
-    foods,
-    flowers,
-    dresscode,
-    sadMood,
-    happyMood,
-    tree,
-    eventLocation,
-    eventAdress,
-    invite,
-    musicTitle,
-    musicArtist,
-    spotify,
-    imgName,
-    imgPath,
-    originalName,
-    memorieStory,
-    burried,
-    cremated,
-    donate,
-    other,
-    cloths,
-    items,
-    religon,
-    sience,
-    finalRestAdress,
-    letters,
-    quotes,
-    docs,
-    videoPath,
-    constactName,
-    emailContact,
-    phonenumberContact,
-    messageContact,
-    userId
-  } = req.body;
+const loginCheck = () => {
+  return (req, res, next) => {
+    // if (req.user)
+    if (req.user) {
+      // if user is logged in, proceed to the next function
+      next();
+    } else {
+      // else if user is not logged in, redirect to /login
+      res.redirect("/auth");
+    }
+  };
+};
 
-  Funeral.findOne({ user: req.user })
-    .then(found => {
-      if(found) {
-        return res
-        .json({ message: "Funeral can be created"})
-      }
+router.get("/:id", (req, res) => {
 
-      return Funeral.create({  foods: foods,
-        flowers: flowers,
-        dresscode: dresscode,
-        sadMood: sadMood,
-        happyMood: happyMood,
-        tree: tree,
-        eventLocation: eventLocation,
-        eventAdress: eventAdress,
-        invite: invite,
-        musicTitle: musicTitle,
-        musicArtist: musicArtist,
-        spotify: spotify,
-        imgName: imgName,
-        imgPath: imgPath,
-        originalName: originalName,
-        memorieStory: memorieStory,
-        burried: burried,
-        cremated: cremated,
-        donate: donate,
-        other: other,
-        cloths: cloths,
-        items: items,
-        religon: religon,
-        sience: sience,
-        finalRestAdress: finalRestAdress,
-        letters: letters,
-        quotes: quotes,
-        docs: docs,
-        videoPath: videoPath,
-        contactName: contactName,
-        emailContact: emailContact,
-        phonenumberContact: phonenumberContact,
-        messageContact: messageContact,
-        userId: userId}).then(Funeral => {
-        res.json(Funeral);
-      }
-    );
-  })
-  .catch(err => {
-    res.json(err);
-  });
-});
-
-
-router.get("/", (req, res) => {
-  Funeral
-    .find()
+  const id = req.params.id
+  console.log('ID FROM ROUTER',id)
+  Funeral.findOne({_id :id})
     .then(data => {
-      res.render("/", { funeral: data, user: req.user });
+      res.json(data);
     })
-    .catch(err => console.log(err));
+    .catch(err => res.json(err));
 });
 
+//creates the funeral collection
+router.post("/", (req, res, next) => {
+  // const newFuneral = req.body;
 
-router.put("/", (req, res) => {
-  const {
-    foods,
-    flowers,
-    dresscode,
-    sadMood,
-    happyMood,
-    tree,
-    eventLocation,
-    eventAdress,
-    invite,
-    musicTitle,
-    musicArtist,
-    spotify,
-    imgName,
-    imgPath,
-    originalName,
-    memorieStory,
-    burried,
-    cremated,
-    donate,
-    other,
-    cloths,
-    items,
-    religon,
-    sience,
-    finalRestAdress,
-    letters,
-    quotes,
-    docs,
-    videoPath,
-    constactName,
-    emailContact,
-    phonenumberContact,
-    messageContact,
-    userId
-  } = req.body;
+  const { howToBeBuried, kindOfVibe, documents} = req.body;
 
-  Funeral.findByIdAndUpdate(
-    req.params.funeral,
-    {
-      foods,
-      flowers,
-      dresscode,
-      sadMood,
-      happyMood,
-      tree,
-      eventLocation,
-      eventAdress,
-      invite,
-      musicTitle,
-      musicArtist,
-      spotify,
-      imgName,
-      imgPath,
-      originalName,
-      memorieStory,
-      burried,
-      cremated,
-      donate,
-      other,
-      cloths,
-      items,
-      religon,
-      sience,
-      finalRestAdress,
-      letters,
-      quotes,
-      docs,
-      videoPath,
-      constactName,
-      emailContact,
-      phonenumberContact,
-      messageContact,
-      userId
-    },
-    { new: true }
-  )(console.log(req.body))
-    .then(funeral => {
-      res.json(funeral);
+  Funeral.create({
+    food:'',
+    flowers:'',
+    dressCode:"",
+    kindOfVibe: kindOfVibe,
+    // tree:'',
+    eventLocation:'',
+    eventAdress:'',
+    invite:'',
+    musicTitle:'',
+    musicArtist:'',
+    spotify:'',
+    imgName:'',
+    imgPath:'',
+    originalName:'',
+    memorieStory:'',
+    howToBeBuried:howToBeBuried,
+    // other,
+    clothes:'',
+    items:'',
+    religion:'',
+    sience:'',
+    finalRestAdress:'',
+    letters:'',
+    quotes:'',
+    documents:documents,
+    videoPath:'',
+    contactName:'',
+    emailContact:'',
+    phonenumberContact:'',
+    messageContact:'',
+    userId:req.user
+  })
+    .then(post => {
+      console.log("The funeral was added to the database", post);
+      User.findOneAndUpdate({_id:req.user._id}, {funeral: post}, {new:true}).then(user => {
+        console.log(user)
+      }).catch(err => console.log(err))
     })
     .catch(err => {
       res.json(err);
     });
 });
+
+router.post("/funeral", loginCheck(), (req, res, next) => {
+  const newFuneral = req.newFuneral;
+  const { event, body, details, theChosen } = req.body;
+  User.findOneAndUpdate(
+    { _id: user._id },
+    { $set: { event, body, details, theChosen } },
+    { new: true }
+  )
+    .then(updatedFuneral => {
+      console.log(updatedFuneral);
+    })
+    .catch(err => console.log(err));
+});
+
+// router.post("/funeral", (req, res) => {
+//   funeral.create({
+    
+//   })
+// })
 
 module.exports = router;

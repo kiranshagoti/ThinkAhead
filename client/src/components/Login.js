@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { login } from "../services/api";
+
+
 export default class Login extends Component {
   state = {
     username: "",
@@ -15,7 +17,9 @@ export default class Login extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
+
     // const { username, password } = this.state;
+
     login(this.state.username, this.state.password).then(data => {
       if (data.message) {
         this.setState({
@@ -26,6 +30,7 @@ export default class Login extends Component {
       } else {
         // successfully logged in
         // update the state for the parent component
+        console.log(data)
         this.props.setUser(data);
         this.props.history.push("/");
       }
