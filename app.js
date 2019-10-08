@@ -13,9 +13,9 @@ const path = require("path");
 // INSTALL THESE DEPENDENCIES: passport-local, passport, bcryptjs, express-session
 // AND UN-COMMENT OUT FOLLOWING LINES:
 
-const passport      = require('passport');
+const passport = require("passport");
 
-require('./config/passport');
+require("./config/passport");
 
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
@@ -65,14 +65,14 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave:false,
-  seveUninitialized: false,
-  store: new MongoStore({mongooseConnection: mongoose.connection})
-})
-); 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 
 // USE passport.initialize() and passport.session() HERE:
 app.use(passport.initialize());
