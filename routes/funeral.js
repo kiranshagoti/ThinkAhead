@@ -79,7 +79,7 @@ router.post("/", (req, res, next) => {
     });
 });
 
-router.post("/funeral", loginCheck(), (req, res, next) => {
+router.post("/", loginCheck(), (req, res, next) => {
   const newFuneral = req.newFuneral;
   const { event, body, details, theChosen } = req.body;
   User.findOneAndUpdate(
@@ -93,10 +93,16 @@ router.post("/funeral", loginCheck(), (req, res, next) => {
     .catch(err => console.log(err));
 });
 
-// router.post("/funeral", (req, res) => {
-//   funeral.create({
-    
-//   })
-// })
+
+router.post('/:id',(req, res) => {
+  const id = req.params.id
+  const changes = req.body
+  console.log('CHNAGES::::::::', changes)
+  Funeral.findByIdAndUpdate({_id:id}, {...changes},{new:true})
+  .then(data => {
+    console.log("dataaaaa",data)
+    res.json(data)
+  }).catch(err => console.log(err))
+})
 
 module.exports = router;

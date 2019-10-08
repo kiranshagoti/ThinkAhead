@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios'; 
+
 
 
 
@@ -14,7 +15,7 @@ const questions = [
     {
         name: 'howToBeBuried',
         q: "Do you know how you want to be buried ?",
-        a: ['Classic funeral', 'Cremation', 'Green', 'Science', 'I don\'t know']
+        a: ['Classic funeral', 'Cremation', 'Tree', 'Science', 'I don\'t know']
     },
     {
         name: 'kindOfVibe',
@@ -30,7 +31,7 @@ const questions = [
 
 
 
-export default class StepForm extends Component {
+class FormUserComponent extends Component {
     state = {
         step: 1,
         thoughtAboutFuneral: false,
@@ -77,8 +78,8 @@ export default class StepForm extends Component {
       // Do axios post request here 
       axios.post('/funeral', {howToBeBuried, kindOfVibe, documents}).then(response => {
         console.log(response.data)
-        this.props.history.push("/");
-      }).catch(err => console.log(err))
+    }).catch(err => console.log(err))
+    this.props.history.push("/");
     }
 
 
@@ -123,6 +124,4 @@ export default class StepForm extends Component {
     }
 }
 
-
-
-
+export default FormUserComponent; 

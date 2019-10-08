@@ -23,12 +23,25 @@ export default class Body extends Component {
     
 
   }
+  updateFuneral = (args) => {
+    console.log('ARGS FOR BODY AXIOS:', args)
+    axios.post(`/funeral/${this.props.user.funeral}`, args)
+    .then(response => {
+      console.log("updated user---",response.data)
+      
+      // updates the parent's component's state, which causes new props to be passed to the <ProjectList/> component
+     
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
   render() {
     this.state.user && console.log("USER FROM BODY COMP.", this.state.user);
     this.state.funeral && console.log("FUNERAL FROM BODY COMP.", this.state.funeral);
     return (
       <div>
-        <Route exact path="/body/handlebody" render={() => <HandleBody user={this.state.user} funeral={this.state.funeral}/>}></Route>
+        <Route exact path="/body/handlebody" render={() => <HandleBody user={this.state.user} updateFuneral={this.updateFuneral} funeral={this.state.funeral}/>}></Route>
         <Link to="/body/handlebody">
           <div>Handle Body</div>
         </Link>
