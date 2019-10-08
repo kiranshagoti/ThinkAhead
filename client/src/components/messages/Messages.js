@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from "./node_modules/react";
 import Letters from "./Letters";
 import Quotes from "./Quotes";
-import { Link, Route } from "react-router-dom";
+import { Link, Route } from "./node_modules/react-router-dom";
 
 export class Messages extends Component {
   render() {

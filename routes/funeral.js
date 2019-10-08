@@ -42,7 +42,7 @@ router.post("/", (req, res, next) => {
     kindOfVibe: kindOfVibe,
     // tree:'',
     eventLocation:'',
-    eventAdress:'',
+    eventAddress:'',
     invite:'',
     musicTitle:'',
     musicArtist:'',
@@ -57,7 +57,7 @@ router.post("/", (req, res, next) => {
     items:'',
     religion:'',
     sience:'',
-    finalRestAdress:'',
+    finalRestAddress:'',
     letters:'',
     quotes:'',
     documents:documents,
@@ -79,24 +79,20 @@ router.post("/", (req, res, next) => {
     });
 });
 
-router.post("/funeral", loginCheck(), (req, res, next) => {
-  const newFuneral = req.newFuneral;
-  const { event, body, details, theChosen } = req.body;
-  User.findOneAndUpdate(
-    { _id: user._id },
-    { $set: { event, body, details, theChosen } },
-    { new: true }
-  )
-    .then(updatedFuneral => {
-      console.log(updatedFuneral);
-    })
-    .catch(err => console.log(err));
-});
+// router.post("/funeral", loginCheck(), (req, res, next) => {
+//   const newFuneral = req.newFuneral;
+//   const { event, body, details, theChosen } = req.body;
+//   User.findOneAndUpdate(
+//     { _id: user._id },
+//     { $set: { event, body, details, theChosen } },
+//     { new: true }
+//   )
+//     .then(updatedFuneral => {
+//       console.log(updatedFuneral);
+//     })
+//     .catch(err => console.log(err));
+// });
 
-// router.post("/funeral", (req, res) => {
-//   funeral.create({
-    
-//   })
-// })
+
 
 module.exports = router;

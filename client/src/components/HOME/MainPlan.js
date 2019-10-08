@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import {Link} from 'react-router-dom'
-
+import React, { Component } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -22,14 +21,22 @@ export default function MainPlan() {
       {/* <Button variant="contained" className={classes.button}>
         Body Handling
       </Button> */}
-      <Link to='/body'>Body Handling</Link>
-
-      <Button variant="contained" className={classes.button}>
+      <div>
+        <Link to="/body">Body Handling</Link>
+      </div>
+      {/* <Button variant="contained" className={classes.button}>
         Event
-      </Button>
-      <Button variant="contained" className={classes.button}>
+      </Button> */}
+      <div>
+        <Link to="/event">Event</Link>
+      </div>
+      {/* <Button variant="contained" className={classes.button}>
         Messages
-      </Button>
+      </Button> */}
+      <div>
+        <Link to="/messages">Messages</Link>
+      </div>
+
       <h1>Share your ......</h1>
       <Button variant="contained" className={classes.button}>
         Plan

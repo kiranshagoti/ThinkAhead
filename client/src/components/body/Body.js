@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import App from "../../App";
-import Navbar from "../Navbar";
+import Navbar from "../HOME/Navbar";
 import { Link, Route } from "react-router-dom";
 import HandleBody from "./HandleBody";
 import Location from "./Location";

@@ -68,13 +68,13 @@ class HandleBody extends React.Component {
     console.log('FUNERALS',this.props.funeral)
     return (
       <form onSubmit={this.handleSubmit}>
-        <select name="howToBeBuried"  >
+        {/* <select name="howToBeBuried"  >
           <option value="burried" selected={this.props.funeral.howToBeBuried === 'burried'}>Burried</option>
           <option value="cremation" selected={this.props.funeral.howToBeBuried === 'cremation'}>Cremation</option>
           <option value="green" selected={this.props.funeral.howToBeBuried === 'green'}>Tree</option>
           <option value="donate" selected={this.props.funeral.howToBeBuried === 'donate'}>Donate</option>
-        </select>
-        {/* <label>
+        </select> */}
+       <label>
           burial
           <input
             name="checked"
@@ -119,7 +119,7 @@ class HandleBody extends React.Component {
             value={this.state.otherInput}
             onChange={this.handleInputChange}
           />
-        </label> */}
+        </label> 
 
 
 

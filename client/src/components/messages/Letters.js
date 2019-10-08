@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
-import { Form, Label, Button } from "react-bootstrap";
+import React, { Component } from "./node_modules/react";
+import { Link, Route } from "./node_modules/react-router-dom";
+import { Form, Label, Button } from "./node_modules/react-bootstrap";
 
 export class Letters extends Component {
   render() {
