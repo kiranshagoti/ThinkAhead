@@ -67,10 +67,9 @@ const MongoStore = require("connect-mongo")(session);
 
 
 app.use(session({
-  cookie:{maxAge:24*60*60},
   secret: process.env.SESSION_SECRET,
-  resave:true,
-  seveUninitialized: true,
+  resave:false,
+  seveUninitialized: false,
   store: new MongoStore({mongooseConnection: mongoose.connection})
 })
 ); 
