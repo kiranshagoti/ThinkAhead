@@ -1,20 +1,60 @@
-import React from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import { Form, Label, Button } from "react-bootstrap";
 
-//=> GET data on eventLocation.data, eventAdress.data, invite.data,
-// => componentDidMountFunction
-// => handelChange() => set new state
-// => componentDidUpdate() =>
-// => POST updated state back to database
-// => render a form with 3 labels
-
  class Eventlocation extends Component {
   state = {
+    user:this.props.user,
     eventLocation: "",
-    eventAdress: "",
-    invite: ""
+    eventAddress: "",
+    invite: []
   };
+
+  // COMPONEN DID MOUNT ---> GET FUNERAL
+  componentDidMount = () => {
+
+    axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
+
+      const {eventLocation, eventAddress, invite} = response.data
+      
+      this.setState({
+        eventLocation,
+        eventAddress,
+        invite
+
+      },() => console.log('FUNERAL IN HANDLEBODY STATE:',this.state))
+
+    }).catch(err => console.log(err))
+  }
+
+// UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
+  handleSubmit = event => {
+    
+    event.preventDefault();
+
+    const {eventLocation, eventAddress, invite} = this.state
+    
+    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {eventLocation, eventAddress, invite}).then(response => {
+      console.log('NEW DATA:',response.data)
+    
+    }).catch(err => console.log(err))
+  };
+
+
+
+
+
+
+
+
+  
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+        [name]: value
+      },() => console.log('CHANGES IN STATE:',this.state));
+  };
+
 
   render() {
     return (
@@ -23,7 +63,7 @@ import { Form, Label, Button } from "react-bootstrap";
           <Form.Group>
             <Form.Control
               type="text"
-              name="food"
+              name="eventLocation"
               value={this.state.eventLocation}
               onChange={this.handleChange}
               placeholder="Where do you want people to celebrate your life?"
@@ -32,26 +72,17 @@ import { Form, Label, Button } from "react-bootstrap";
           <Form.Group>
             <Form.Control
               type="text"
-              name="food"
-              value={this.state.eventAdress}
+              name="eventAddress"
+              value={this.state.eventAddress}
               onChange={this.handleChange}
               placeholder="Adress"
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Control
-              type="text"
-              name="food"
-              value={this.state.invite}
-              onChange={this.handleChange}
-              placeholder="Invite guests"
-            />
-          </Form.Group>
+          
           <Button type="submit">Update funeral</Button>
         </Form>
       </div>
     );
   }
 }
-
 export default Eventlocation;

@@ -1,13 +1,7 @@
-<<<<<<< HEAD:client/src/components/messages/Letters.js
-import React, { Component } from "./node_modules/react";
-import { Link, Route } from "./node_modules/react-router-dom";
-import { Form, Label, Button } from "./node_modules/react-bootstrap";
-=======
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import { Form, Label, Button } from "react-bootstrap";
 import axios from "axios";
->>>>>>> 0ae966ce9e3667a1e901190d744d8eea080668ce:client/src/components/Letters.js
 
 export class Letters extends Component {
   state = {

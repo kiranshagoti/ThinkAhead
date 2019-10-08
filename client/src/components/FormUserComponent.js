@@ -76,7 +76,7 @@ class FormUserComponent extends Component {
       const {howToBeBuried, kindOfVibe, documents} = this.state
       console.log(howToBeBuried, kindOfVibe, documents)
       // Do axios post request here 
-      axios.post('/funeral', {howToBeBuried, kindOfVibe, documents}).then(response => {
+      axios.post('/funeral/new', {howToBeBuried, kindOfVibe, documents}).then(response => {
         console.log(response.data)
     }).catch(err => console.log(err))
     this.props.history.push("/");

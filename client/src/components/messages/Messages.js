@@ -1,13 +1,9 @@
-import React, { Component } from "./node_modules/react";
+import React, { Component } from "react";
 import Letters from "./Letters";
 import Quotes from "./Quotes";
-<<<<<<< HEAD:client/src/components/messages/Messages.js
-import { Link, Route } from "./node_modules/react-router-dom";
-=======
 import Documents from "./Documents";
 import { Link, Route } from "react-router-dom";
 import axios from "axios";
->>>>>>> 0ae966ce9e3667a1e901190d744d8eea080668ce:client/src/components/Messages.js
 
 export class Messages extends Component {
   state = {

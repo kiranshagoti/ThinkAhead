@@ -3,79 +3,86 @@ import axios from "axios";
 import { Form, Label, Button } from "react-bootstrap";
 
 export default class Vibe extends Component {
+
   state = {
-    sadMood: false,
-    happyMood: true,
+    // sadMood: false,
+    // happyMood: true,
+    user:this.props.user,
     food: "",
-    dresscode: "",
-    flowers: ""
+    dressCode: "",
+    kindOfVibe:'',
+    flowers: "",
+
   };
 
-  getData = () => {
-    const id = this.props.match.params.id;
-    axios
-      .get("/event/vibe")
-      .then(response => {
-        if (response.data) {
-          this.setState({
-            sadMood: response.data.sadMood,
-            happyMood: response.data.happyMood,
-            food: response.data.food,
-            dresscode: response.data.dresscode,
-            flowers: response.data.flowers
-          });
-        }
-      })
-      .catch(err => {
-        console.log(err.response);
-        // handle err.response depending on err.response.status
-        if (err.response.status === 404) {
-          this.setState({ error: "Not found" });
-        }
-      });
-  };
+  
 
+  // COMPONEN DID MOUNT ---> GET FUNERAL
   componentDidMount = () => {
-    this.getData();
-  };
 
-  handleChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
+    axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
 
+      const {food, dressCode, kindOfVibe, flowers} = response.data
+      
+      this.setState({
+        food,
+        dressCode,
+        kindOfVibe,
+        flowers
+
+      },() => console.log('FUNERAL IN VIBE STATE:',this.state))
+
+    }).catch(err => console.log(err))
+  }
+
+// UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
   handleSubmit = event => {
+    
     event.preventDefault();
-    axios
-      .post("/", {
-        sadMood: this.state.sadMood,
-        happyMood: this.state.happyMood,
-        food: this.state.food,
-        dresscode: this.state.dresscode,
-        flowers: this.state.flowers
-      })
-      .then(() => {
-        this.setState({
-          sadMood: "",
-          happyMood: "",
-          food: "",
-          dresscode: "",
-          flowers: ""
-        });
-        this.state.getData();
-      })
-      .catch(err => {
-        console.log(err);
-      });
+
+    const {food, dressCode, kindOfVibe, flowers} = this.state
+    
+    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {food, dressCode, kindOfVibe, flowers}).then(response => {
+      console.log('NEW DATA:',response.data)
+    
+    }).catch(err => console.log(err))
   };
+
+
+
+
+
+
+
+
+  
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+        [name]: value
+      },() => console.log('CHANGES IN STATE:',this.state));
+  };
+
+
+  
 
   render() {
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
+
+        <Form.Group>
+            <Form.Label>Vibe</Form.Label>
+            <Form.Control
+              type="text"
+              name="kindOfVibe"
+              value={this.state.kindOfVibe}
+              onChange={this.handleChange}
+              placeholder="kind of vibe"
+            />
+          </Form.Group>
+
+
           <Form.Group>
             <Form.Label>Food</Form.Label>
             <Form.Control
@@ -90,8 +97,8 @@ export default class Vibe extends Component {
             <Form.Label>Dresscode</Form.Label>
             <Form.Control
               type="text"
-              name="dresscode"
-              value={this.state.dresscode}
+              name="dressCode"
+              value={this.state.dressCode}
               onChange={this.handleChange}
               placeholder="Spark up the goodbye party with a theme"
             />

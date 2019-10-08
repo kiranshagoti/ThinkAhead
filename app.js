@@ -91,12 +91,6 @@ app.use("/", index);
 const funeral = require("./routes/funeral");
 app.use("/funeral", funeral);
 
-// const projectRoutes = require("./routes/project");
-// app.use("/api/projects", projectRoutes);
-
-// const taskRoutes = require("./routes/task");
-// app.use("/api/tasks", taskRoutes);
-
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 

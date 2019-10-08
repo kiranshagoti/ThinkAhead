@@ -14,14 +14,16 @@ const funeralSchema = new Schema({
   eventAddress: String,
   invite: Array,
  
-  musicTitle: String,
-  musicArtist: String,
+  // musicTitle: String,
+  // musicArtist: String,
+  playlist:[Schema.Types.Mixed],
   spotify: String, ///or maybe something else
 
   imgName: String,
   imgPath: String,
   originalName: String,
-  memorieStory: String,
+  // memorieStory: String,
+  memories: [Schema.Types.Mixed],
 
   // burried: Boolean,
   // cremated: Boolean,
