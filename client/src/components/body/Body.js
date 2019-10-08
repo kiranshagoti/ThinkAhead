@@ -43,7 +43,7 @@ export default class Body extends Component {
         <Link to="/body/handlebody">
           <div>Handle Body</div>
         </Link>
-        {/* <Route exact path="/body/location" component={Location}></Route> */}
+        <Route exact path="/body/location" component={Location}></Route>
         <Link to="/location">
           <div>Location</div>
         </Link>

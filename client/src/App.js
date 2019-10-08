@@ -26,6 +26,8 @@ import Event from "./components/event/Event";
 import Vibe from "./components/Vibe";
 import FormUserComponent from './components/FormUserComponent';
 import Settings from "./components/Settings";
+import Playlist from "./components/event/Playlist";
+import AddSong from "./components/event/AddSong";
 
 
 const NotFound = () => {
@@ -96,6 +98,8 @@ class App extends React.Component {
           <Route exact path="/messages/documents" component={Documents}></Route>
           <Route path="/funeral/event" component={Event} />
           <Route exact path="/vibe" component={Vibe} />
+          <Route exact path="/event/playlist" component={Playlist}></Route>
+          <Route exact path="/event/playlist/AddSong" component={AddSong}></Route>
           
           <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
           <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
