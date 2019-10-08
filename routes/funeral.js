@@ -32,14 +32,15 @@ router.get("/:id", (req, res) => {
 //creates the funeral collection
 router.post("/", (req, res, next) => {
   // const newFuneral = req.body;
+
   const { howToBeBuried, kindOfVibe, documents} = req.body;
 
   Funeral.create({
-    foods:'',
+    food:'',
     flowers:'',
-    dresscode:'',
-    kindOfVibe:kindOfVibe,
-    tree:'',
+    dressCode:"",
+    kindOfVibe: kindOfVibe,
+    // tree:'',
     eventLocation:'',
     eventAdress:'',
     invite:'',
@@ -52,16 +53,16 @@ router.post("/", (req, res, next) => {
     memorieStory:'',
     howToBeBuried:howToBeBuried,
     // other,
-    cloths:'',
+    clothes:'',
     items:'',
-    religon:'',
+    religion:'',
     sience:'',
     finalRestAdress:'',
     letters:'',
     quotes:'',
-    docs:'',
+    documents:documents,
     videoPath:'',
-    constactName:'',
+    contactName:'',
     emailContact:'',
     phonenumberContact:'',
     messageContact:'',

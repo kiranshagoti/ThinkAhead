@@ -7,11 +7,11 @@ class HandleBody extends React.Component {
     value: "",
     handleTheBody: '',
     otherInput: "",
-    clothesInput: "",
+    dressCode: "",
     treasureInput: "",
     howToBeBuried: '',
-    user: this.props.user
-    // funeral: this.props.funeral
+    user: this.props.user,
+    funeral: this.props.funeral
   };
 
   componentDidMount = () => {
@@ -33,14 +33,48 @@ class HandleBody extends React.Component {
   // project management 
   // using  axious api  call to UPDATE the data 
   //  create a route which handle the update!! ( look project management lab)
-
-  }
+    event.preventDefault();
+    axios.post("/funeral", { 
+      checked: false,
+      value: "",
+      handleTheBody: this.state.handleTheBody,
+      otherInput: this.state.otherInput,
+      dressCode: this.state.dressCode,
+      treasureInput: this.state.treasureInput,
+      howToBeBuried: this.state.howToBeBuried,
+      user: this.props.user
+    })
+    .then(() => {
+      this.setState({
+        checked: true,
+    value: "",
+    handleTheBody: '',
+    otherInput: "",
+    dressCode: "",
+    treasureInput: "",
+    howToBeBuried: '',
+    user: this.props.user
+      });
+      // updates the parent's component's state, which causes new props to be passed to the <ProjectList/> component
+     
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+  
 
   render() {
     console.log('FUNERALS',this.props.funeral)
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <select name="howToBeBuried"  >
+          <option value="burried" selected={this.props.funeral.howToBeBuried === 'burried'}>Burried</option>
+          <option value="cremation" selected={this.props.funeral.howToBeBuried === 'cremation'}>Cremation</option>
+          <option value="green" selected={this.props.funeral.howToBeBuried === 'green'}>Tree</option>
+          <option value="donate" selected={this.props.funeral.howToBeBuried === 'donate'}>Donate</option>
+        </select>
+        {/* <label>
           burial
           <input
             name="checked"
@@ -85,7 +119,7 @@ class HandleBody extends React.Component {
             value={this.state.otherInput}
             onChange={this.handleInputChange}
           />
-        </label>
+        </label> */}
 
 
 
@@ -94,9 +128,9 @@ class HandleBody extends React.Component {
         <label>
           What do you want to wear?
           <input
-            name="clothesInput"
+            name="dressCode"
             type="text"
-            value={this.state.clothesInput}
+            value={this.state.dressCode}
             onChange={this.handleInputChange}
           />
         </label>
@@ -109,6 +143,7 @@ class HandleBody extends React.Component {
             onChange={this.handleInputChange}
           />
         </label>
+        <button type="submit">Submit</button>
       </form>
     );
   }

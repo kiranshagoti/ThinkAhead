@@ -7,14 +7,14 @@ import axios from 'axios'
 
 const questions = [
     {
-        name: 'thoughAboutFunerals',
-        q: "Did you ever thought about your funerals ?",
+        name: 'thoughtAboutFuneral',
+        q: "Have you ever thought about your funeral ?",
         a: ['yes', 'no']
     },
     {
         name: 'howToBeBuried',
         q: "Do you know how you want to be buried ?",
-        a: ['Classical funeral', 'Cremation', 'Green', 'Donation', 'I don\'t know']
+        a: ['Classic funeral', 'Cremation', 'Green', 'Science', 'I don\'t know']
     },
     {
         name: 'kindOfVibe',
@@ -33,7 +33,7 @@ const questions = [
 export default class StepForm extends Component {
     state = {
         step: 1,
-        thoughAboutFunerals: false,
+        thoughtAboutFuneral: false,
         howToBeBuried: false,
         kindOfVibe: false,
         documents: false,
@@ -42,7 +42,7 @@ export default class StepForm extends Component {
     }
     popUp = q => {
         let content = ''
-        if (q === 'thoughAboutFunerals') {
+        if (q === 'thoughtAboutFuneral') {
             content = "blabla funerals"
         } else if (q === 'howToBeBuried') {
             content = "bliblo burried"
