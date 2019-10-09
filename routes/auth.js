@@ -72,4 +72,14 @@ router.get("/loggedin", (req, res) => {
 
   res.json(req.user);
 });
+
+
+router.delete('/delete/:userId', (req, res) => {
+  console.log('DELETEUSER IN ROUTER')
+  const id = req.params.userId
+  User.findByIdAndDelete(id).then(() => {
+    res.json({message: 'Account deleted'})
+    req.logout()
+  }).catch(err => console.log(err))
+})
 module.exports = router;

@@ -29,7 +29,7 @@ import AddMemorie from "./components/event/AddMemorie";
 import FormUserComponent from "./components/FormUserComponent";
 // import Vibe from "./components/Vibe";
 // import FormUserComponent from './components/FormUserComponent';
-import Settings from "./components/Settings";
+import Settings from "./components/HOME/Settings";
 import Playlist from "./components/event/Playlist";
 import AddSong from "./components/event/AddSong";
 import Protected from "./components/Protected";
@@ -54,6 +54,7 @@ class App extends React.Component {
     const funeralId = this.state.user && this.state.user.funeral;
 
     return (
+      <>
       <div className="App">
         <Navbar setUser={this.setUser} />
         <Switch>
@@ -196,8 +197,9 @@ class App extends React.Component {
 
           <Route component={NotFound} />
         </Switch>
-        <BottomNavbar />
       </div>
+      <BottomNavbar />
+      </>
     );
   }
 }
