@@ -41,7 +41,7 @@ const funeralSchema = new Schema({
   
   finalRestAddress: String,
 
-  letters: String,
+  letters: [Schema.Types.Mixed],
   letterTo: String,
   quotes: String,
   documents: Object, //upload important files

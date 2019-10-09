@@ -40,23 +40,23 @@ export class Messages extends Component {
       <div>
         <p> Write letters to your loved ones and share your favorite quotes</p>
 
-        <Link to="/letters">
+        <Link to="/messages/letters">
           <button>letter icon</button>
           <div>Letters</div>
         </Link>
 
-        <Link to="/quotes">
+        <Link to="/messages/quotes">
           <button> "" </button>
           <div>Quotes</div>
         </Link>
 
-        <Link to="/documents">
+        <Link to="/messages/documents">
           <button> document icon </button>
           <div>Documents</div>
         </Link>
         <Route
           exact
-          path="/letters"
+          path="/messages/letters"
           render={props => (
             <Letters
               user={this.state.user}
@@ -67,7 +67,7 @@ export class Messages extends Component {
         />
         <Route
           exact
-          path="/quotes"
+          path="/messages/quotes"
           render={props => (
             <Quotes
               user={this.state.user}
@@ -78,7 +78,7 @@ export class Messages extends Component {
         />
         <Route
           exact
-          path="/documents"
+          path="/messages/documents"
           render={props => (
             <Documents
               user={this.state.user}
