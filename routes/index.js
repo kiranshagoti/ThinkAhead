@@ -5,10 +5,6 @@ const data = require("../articleseeds");
 const Funeral = require("../models/Funeral");
 const Article = require("../models/Article");
 
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
 
 const loginCheck = () => {
   return (req, res, next) => {

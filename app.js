@@ -20,7 +20,7 @@ require("./config/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/thinkahead", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/thinkahead", {
     useNewUrlParser: true
   })
   .then(x => {
@@ -57,7 +57,7 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // ADD SESSION SETTINGS HERE:
@@ -93,5 +93,10 @@ app.use("/funeral", funeral);
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;
