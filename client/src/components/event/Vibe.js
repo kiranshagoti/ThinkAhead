@@ -5,8 +5,6 @@ import { Form, Label, Button } from "react-bootstrap";
 export default class Vibe extends Component {
 
   state = {
-    // sadMood: false,
-    // happyMood: true,
     user:this.props.user,
     food: "",
     dressCode: "",
@@ -35,24 +33,6 @@ export default class Vibe extends Component {
     }).catch(err => console.log(err))
   }
 
-// UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    
-    event.preventDefault();
-
-    const {food, dressCode, kindOfVibe, flowers} = this.state
-    
-    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {food, dressCode, kindOfVibe, flowers}).then(response => {
-      console.log('NEW DATA:',response.data)
-    
-    }).catch(err => console.log(err))
-  };
-
-
-
-
-
-
 
 
   
@@ -60,7 +40,14 @@ export default class Vibe extends Component {
     const { name, value } = event.target;
     this.setState({
         [name]: value
-      },() => console.log('CHANGES IN STATE:',this.state));
+      },() => {
+        const {food, dressCode, kindOfVibe, flowers} = this.state
+    
+    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {food, dressCode, kindOfVibe, flowers}).then(response => {
+      console.log('NEW DATA:',response.data)
+    
+    }).catch(err => console.log(err))
+      });
   };
 
 
@@ -69,7 +56,7 @@ export default class Vibe extends Component {
   render() {
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
+        <Form >
 
         <Form.Group>
             <Form.Label>Vibe</Form.Label>
@@ -114,7 +101,6 @@ export default class Vibe extends Component {
             />
           </Form.Group>
 
-          <Button type="submit">Update funeral</Button>
         </Form>
       </div>
     );

@@ -42,7 +42,7 @@ router.post("/signup", (req, res) => {
 });
 // POST /api/auth/login
 router.post("/login", (req, res) => {
-  console.log('LOGIN NOT GONAWORK')
+  console.log("LOGIN NOT GONAWORK");
   passport.authenticate("local", (err, user) => {
     if (err) {
       return res.status(500).json({ message: "Error while authenticating" });
@@ -65,9 +65,11 @@ router.delete("/logout", (req, res) => {
   req.logout();
   res.json({ message: "Successful logout" });
 });
+
 // checks if the user has an active session
 router.get("/loggedin", (req, res) => {
-  console.log('HELLO LOGGEDIN', req.user)
+  console.log("HELLO LOGGEDIN", req.user);
+
   res.json(req.user);
 });
 module.exports = router;

@@ -24,6 +24,7 @@ export default class Event extends Component {
           <Link to="/performance">
             <button> type="button">Arrow-btn</button>
           </Link>
+          
         </div>
         <Switch>
         <Route exact path="/event/vibe" render={() => <Vibe user={this.state.user} funeralId={this.state.user.funeral}/>}></Route> 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { login } from "../services/api";
-
 
 export default class Login extends Component {
   state = {
@@ -30,14 +30,13 @@ export default class Login extends Component {
       } else {
         // successfully logged in
         // update the state for the parent component
-        console.log(data)
+        console.log(data);
         this.props.setUser(data);
         this.props.history.push("/");
       }
     });
   };
 
-  
   render() {
     return (
       <>
@@ -63,11 +62,15 @@ export default class Login extends Component {
               id="password"
             />
           </Form.Group>
+
           {this.state.message && (
             <Alert variant="danger">{this.state.message}</Alert>
           )}
-          
+
           <Button type="submit">Login</Button>
+          <Link to="/signup">
+            <button>Signup</button>
+          </Link>
         </Form>
       </>
     );

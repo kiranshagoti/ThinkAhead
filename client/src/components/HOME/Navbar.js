@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {logout} from '../../services/api'
 
 export default class Navbar extends Component {
     state = {
@@ -11,6 +12,12 @@ export default class Navbar extends Component {
             showMenu: !this.state.showMenu
         });
     }
+    handleLogout = (props) => {
+        logout().then(() => {
+            this.props.setUser(null)
+        })
+    }
+
     render() {
         const displayed = {
             width: '300px',
@@ -37,7 +44,7 @@ export default class Navbar extends Component {
                         <li><Link to ="/legal">LEGAL</Link></li>
                         <li><Link to ="/invite-friends">INVITE FRIENDS</Link></li>
                         <li><Link to ="/settings">SETTINGS</Link></li>
-                        <li><Link to ="/logout">LOGOUT</Link></li>
+                        <button onClick={(props) => this.handleLogout(props)}>LOGOUT</button>
                 </ul>
                 </nav>
                 </div>

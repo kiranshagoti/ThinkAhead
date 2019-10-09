@@ -34,26 +34,6 @@ export default class Signup extends Component {
     });
   };
 
-    handleSubmit = event => {
-    event.preventDefault();
-
-    const { username, password } = this.state;
-
-    signup(username, password).then(data => {
-      if (data.message) {
-        this.setState({
-          message: data.message,
-          username: "",
-          password: ""
-        });
-      } else {
-        // successfully signed up
-        // update the state for the parent component
-        this.props.setUser(data);
-        this.props.history.push("/welcome");
-      }
-    });
-  };
   render() {
     return (
       <>

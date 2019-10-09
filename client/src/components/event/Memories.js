@@ -24,18 +24,7 @@ export default class Memories extends Component {
     }).catch(err => console.log(err))
   }
 
-// UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    
-    event.preventDefault();
 
-    const {memories} = this.state
-    
-    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {memories}).then(response => {
-      console.log('NEW DATA:',response.data)
-    
-    }).catch(err => console.log(err))
-  };
 
 
 
@@ -56,7 +45,14 @@ export default class Memories extends Component {
 
         memories: this.state.memories.concat({memories:memories, image:image})
       
-      },() => console.log('CHANGES IN STATE:',this.state));
+      },() => {
+        const {memories} = this.state
+    
+    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {memories}).then(response => {
+      console.log('NEW DATA:',response.data)
+    
+    }).catch(err => console.log(err))
+      });
   };
   render() {
 
@@ -84,7 +80,6 @@ export default class Memories extends Component {
       <label>Memories</label>
       <input type='text' name='memories' placeholder='Write memories'/>
       <button type='submit' >Add Memory</button>
-      <button type='button' onClick={this.handleSubmit}>Update funeral</button>
 
       </form>
 
