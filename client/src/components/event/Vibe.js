@@ -1,77 +1,74 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Form, Label, Button } from "react-bootstrap";
+import { Link, Route, Switch } from "react-router-dom";
+import Event from "./Event";
 
 export default class Vibe extends Component {
-
   state = {
     // sadMood: false,
     // happyMood: true,
-    user:this.props.user,
+    user: this.props.user,
     food: "",
     dressCode: "",
-    kindOfVibe:'',
-    flowers: "",
-
+    kindOfVibe: "",
+    flowers: ""
   };
-
-  
 
   // COMPONEN DID MOUNT ---> GET FUNERAL
   componentDidMount = () => {
+    axios
+      .get(`/funeral/${this.state.user.funeral}`)
+      .then(response => {
+        const { food, dressCode, kindOfVibe, flowers } = response.data;
 
-    axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
+        this.setState(
+          {
+            food,
+            dressCode,
+            kindOfVibe,
+            flowers
+          },
+          () => console.log("FUNERAL IN VIBE STATE:", this.state)
+        );
+      })
+      .catch(err => console.log(err));
+  };
 
-      const {food, dressCode, kindOfVibe, flowers} = response.data
-      
-      this.setState({
+  // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const { food, dressCode, kindOfVibe, flowers } = this.state;
+
+    axios
+      .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
         food,
         dressCode,
         kindOfVibe,
         flowers
-
-      },() => console.log('FUNERAL IN VIBE STATE:',this.state))
-
-    }).catch(err => console.log(err))
-  }
-
-// UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    
-    event.preventDefault();
-
-    const {food, dressCode, kindOfVibe, flowers} = this.state
-    
-    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {food, dressCode, kindOfVibe, flowers}).then(response => {
-      console.log('NEW DATA:',response.data)
-    
-    }).catch(err => console.log(err))
+      })
+      .then(response => {
+        console.log("NEW DATA:", response.data);
+      })
+      .catch(err => console.log(err));
   };
 
-
-
-
-
-
-
-
-  
   handleChange = event => {
     const { name, value } = event.target;
-    this.setState({
+    this.setState(
+      {
         [name]: value
-      },() => console.log('CHANGES IN STATE:',this.state));
+      },
+      () => console.log("CHANGES IN STATE:", this.state)
+    );
   };
-
-
-  
 
   render() {
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
-
-        <Form.Group>
+          <Form.Group>
             <Form.Label>Vibe</Form.Label>
             <Form.Control
               type="text"
@@ -81,7 +78,6 @@ export default class Vibe extends Component {
               placeholder="kind of vibe"
             />
           </Form.Group>
-
 
           <Form.Group>
             <Form.Label>Food</Form.Label>
@@ -113,9 +109,31 @@ export default class Vibe extends Component {
               placeholder="Let your planer know what flowers you love the most"
             />
           </Form.Group>
-
-          <Button type="submit">Update funeral</Button>
         </Form>
+        <div>
+          <Switch>
+            <Route
+              exact
+              path="/event"
+              render={() => (
+                <Event
+                  user={this.state.user}
+                  funeralId={this.state.user.funeral}
+                />
+              )}
+            ></Route>
+          </Switch>
+
+          <Link to="/event">
+            <Button
+              type="button"
+              onClick={this.handleSubmit}
+              onClick={this.routeChange}
+            >
+              Arrowbtn-updatesfuneral and takes us back to Event
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

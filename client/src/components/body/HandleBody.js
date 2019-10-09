@@ -14,7 +14,7 @@ class HandleBody extends React.Component {
     treasureInput: "",
     howToBeBuried: '',
     user: this.props.user,
-    funeral: this.props.funeral
+    // funeral: this.props.funeral
   };
 
 // COMPONEN DID MOUNT ---> GET FUNERAL

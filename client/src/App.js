@@ -21,7 +21,7 @@ import Location from "./components/body/Location";
 import Messages from "./components/messages/Messages";
 import Quotes from "./components/messages/Quotes";
 import Letters from "./components/messages/Letters";
-import Documents from "./components/messages/Documents"
+import Documents from "./components/messages/Documents";
 import Event from "./components/event/Event";
 import Vibe from "./components/event/Vibe";
 import Memories from "./components/event/Memories";
@@ -32,7 +32,7 @@ import FormUserComponent from "./components/FormUserComponent";
 import Settings from "./components/Settings";
 import Playlist from "./components/event/Playlist";
 import AddSong from "./components/event/AddSong";
-
+import Letterscollection from "./components/messages/Letterscollection";
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -108,24 +108,43 @@ class App extends React.Component {
             path="/event"
             render={props => <Event user={this.state.user} {...props} />}
           />
-           <Route exact path="/event/vibe" component={Vibe} /> 
+          <Route exact path="/event/vibe" component={Vibe} />
 
-         
           <Route
             exact
             path="/messages"
             render={props => <Messages user={this.state.user} {...props} />}
           ></Route>
-          <Route exact path="/messages/letters" render={props => <Letters user={this.state.user} {...props} />}></Route>
-          <Route exact path="/messages/quotes" component={Quotes}></Route>
+          <Route
+            exact
+            path="/messages/letters"
+            render={props => <Letters user={this.state.user} {...props} />}
+          ></Route>
+          <Route
+            exact
+            path="/messages/quotes"
+            render={props => <Quotes user={this.state.user} {...props} />}
+          />
           <Route exact path="/messages/documents" component={Documents}></Route>
           <Route path="/funeral/event" component={Event} />
           <Route exact path="/vibe" component={Vibe} />
           <Route exact path="/event/playlist" component={Playlist}></Route>
-          <Route exact path="/event/playlist/AddSong" component={AddSong}></Route>
-          
-          <Route exact path="/" render={props => <Home user={this.state.user} {...props}/>} />
-          <Route exact path="/body" render={props => <Body user={this.state.user} {...props}/>} />
+          <Route
+            exact
+            path="/event/playlist/AddSong"
+            component={AddSong}
+          ></Route>
+
+          <Route
+            exact
+            path="/"
+            render={props => <Home user={this.state.user} {...props} />}
+          />
+          <Route
+            exact
+            path="/body"
+            render={props => <Body user={this.state.user} {...props} />}
+          />
 
           <Route
             exact
@@ -141,6 +160,12 @@ class App extends React.Component {
           <Route path="/about" component={About} />
           <Route path="/team" component={Team} />
 
+          <Route
+            path="/messages/letters/letterscollection"
+            render={props => (
+              <Letterscollection user={this.state.user} {...props} />
+            )}
+          />
           <Route component={NotFound} />
         </Switch>
         <BottomNavbar />
