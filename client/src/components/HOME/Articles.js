@@ -19,9 +19,10 @@ export default class Articles extends Component {
 
     const articles = this.state.listOfArticles && this.state.listOfArticles.map(x => {
       return (
-        <div key={x._id}>
+        <div className='homeArticle' key={x._id}>
           <h3>{x.title}</h3>
-          <p>{x.content}</p>
+          {x.content.length > 200 ? <p>{[...x.content].splice(0, 200).join('')}<span style={{marginLeft:'5px', color:'blue'}}>more...</span></p> : <p>{x.content}</p>}
+          
         </div>
       )
     })

@@ -16,36 +16,37 @@ export default function MainPlan() {
   const classes = useStyles();
 
   return (
-    <div>
-      <h1>Plan your......</h1>
+<>
+    <div className='homeSection'>
+      <h3>Plan your......</h3>
 
-      <div>
-        <Link to="/body">Body Handling</Link>
+      <div className='homeSection-btn'>
+        <Link to="/body">Body</Link>
       </div>
 
-      <div>
+      <div className='homeSection-btn'>
         <Link to="/event">Event</Link>
       </div>
 
-      <div>
+      <div className='homeSection-btn'>
         <Link to="/messages">Messages</Link>
       </div>
+      </div>
 
-
-
-      <h1>Share your ......</h1>
+<div className='homeSection'>
+      <h3>Share your ......</h3>
       
       <Button variant="contained" className={classes.button}>
-        Plan
+        Icon
       </Button>
 
       <Button variant="contained" className={classes.button}>
-        Message
+        Icon
       </Button>
-
-      <Button variant="contained" className={classes.button}>
-        Loved One
-      </Button>
-    </div>
+<div className='homeSection-btn'>
+      <Link to="/share-funeral-plans">Share your plan with LovedOne</Link>
+      </div>
+      </div>
+      </>
   );
 }

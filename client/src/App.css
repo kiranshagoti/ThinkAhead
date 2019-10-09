@@ -1,5 +1,13 @@
+body{
+  width:100vw  
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex:1
+  
 }
 
 .App-logo {
@@ -20,6 +28,43 @@
 .App-link {
   color: #09d3ac;
 }
+
+.nav-style{
+  padding: 40px;
+  border-radius: 5px;
+}
+.welcomeMessage{
+  padding: 20px;
+  text-align: justify;
+}
+.welcomeMessage h2 {
+  text-align: center;
+}
+
+.homeSection{
+  margin: 10px 0;
+}
+.homeSection-btn{
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.homeArticle{
+  padding: 30px;
+  text-align: left;
+}
+.bottom-nav{
+  width:100vw;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+}
+
 
 .nav-style {
   text-align: left;

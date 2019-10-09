@@ -29,7 +29,7 @@ import AddMemorie from "./components/event/AddMemorie";
 import FormUserComponent from "./components/FormUserComponent";
 // import Vibe from "./components/Vibe";
 // import FormUserComponent from './components/FormUserComponent';
-import Settings from "./components/Settings";
+import Settings from "./components/HOME/Settings";
 import Playlist from "./components/event/Playlist";
 import AddSong from "./components/event/AddSong";
 
@@ -51,6 +51,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <>
       <div className="App">
         <Navbar />
         <Switch>
@@ -76,21 +77,19 @@ class App extends React.Component {
           <Route exact path="/legal" component={Legal} />
           <Route exact path="/about" component={About} />
           <Route exact path="/team" component={Team} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" render={props => <Profile user={this.state.user} {...props}/>} />
           <Route exact path="/explore" component={Explore} />
           <Route
             exact
-            path="/share-funeral-plans"
-            component={ShareFuneralPlan}
+            path="/share-funeral-plans" render={props => <ShareFuneralPlan user={this.state.user} {...props}/>}
           />
           <Route
             exact
             path="/share-funeral-plans/add-contact"
-            component={AddContact}
+            render={(props) => <AddContact user={this.state.user} {...props}/>}
           />
-          <Route path="/about" component={About} />
-          <Route path="/team" component={Team} />
-          <Route path="/settings" component={Settings} />
+        
+          <Route path="/settings" render={props => <Settings user={this.state.user} {...props}/>} />
           {/* <Articles /> */}
           <Route
             path="/body"
@@ -138,13 +137,13 @@ class App extends React.Component {
             render={props => <Body user={this.state.user} {...props} />}
           />
 
-          <Route path="/about" component={About} />
-          <Route path="/team" component={Team} />
+        
 
           <Route component={NotFound} />
         </Switch>
-        <BottomNavbar />
       </div>
+      <BottomNavbar />
+      </>
     );
   }
 }

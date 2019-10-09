@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const Profile = () => {
-  return (
-    <div>
-      <img src="" alt="profile-picture" />
-      <h1>Name</h1>
-      <p>Email Address</p>
-      <p>Mobile</p>
-      <p>Location</p>
-      <p>My Plan</p>      
-    </div>
-  )
+export default class Profile extends Component {
+  state = {}
+  render() {
+    return (
+      <div className='profileSection'>
+        <AccountCircleIcon />
+        <h3>{this.props.user.username}</h3>
+        <p>{this.props.user.email}</p>
+        <p>{this.props.user.number}</p>
+      </div>
+    )
+  }
 }
-
-export default Profile

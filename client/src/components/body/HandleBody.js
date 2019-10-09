@@ -3,18 +3,12 @@ import axios from 'axios'
 
 class HandleBody extends React.Component {
   state = {
-    // checked: false,
-    // handleTheBody: '',
-    // otherInput: "",
-    // dressCode: "",
-    // treasureInput: "",
-    // howToBeBuried: "",
-    // other: "",
+
     clothes: "",
     treasureInput: "",
     howToBeBuried: '',
     user: this.props.user,
-    funeral: this.props.funeral
+    // funeral: this.props.funeral
   };
 
 // COMPONEN DID MOUNT ---> GET FUNERAL
