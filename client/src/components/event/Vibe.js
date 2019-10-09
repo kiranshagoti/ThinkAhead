@@ -6,8 +6,6 @@ import Event from "./Event";
 
 export default class Vibe extends Component {
   state = {
-    // sadMood: false,
-    // happyMood: true,
     user: this.props.user,
     food: "",
     dressCode: "",
@@ -48,9 +46,6 @@ export default class Vibe extends Component {
         kindOfVibe,
         flowers
       })
-      .then(response => {
-        console.log("NEW DATA:", response.data);
-      })
       .catch(err => console.log(err));
   };
 
@@ -60,14 +55,28 @@ export default class Vibe extends Component {
       {
         [name]: value
       },
-      () => console.log("CHANGES IN STATE:", this.state)
+      () => {
+        const { food, dressCode, kindOfVibe, flowers } = this.state;
+
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+            food,
+            dressCode,
+            kindOfVibe,
+            flowers
+          })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
     );
   };
 
   render() {
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
+        <Form>
           <Form.Group>
             <Form.Label>Vibe</Form.Label>
             <Form.Control

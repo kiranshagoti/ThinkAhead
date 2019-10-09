@@ -5,9 +5,10 @@ const ProtectedRoute = ({
   component: Component,
   user,
   path,
-  redirectPath = "/",
+  redirectPath = "/login",
   ...rest
 }) => {
+  console.log(user);
   return (
     <Route
       path={path}

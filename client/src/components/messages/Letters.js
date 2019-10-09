@@ -6,11 +6,21 @@ import Messages from "./Messages";
 
 export class Letters extends Component {
   state = {
-    user: this.props.user,
-    letters: []
+    letters: "",
+    letterTo: "",
+    user:this.props.user,
+    letters:[]
   };
 
+
+
   componentDidMount = () => {
+    console.log(this.props);
+  };
+
+
+
+  updateFuneral = toUpdate => {
     axios
       .get(`/funeral/${this.state.user.funeral}`)
       .then(response => {
@@ -26,34 +36,16 @@ export class Letters extends Component {
       .catch(err => console.log(err));
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  
 
-    const { letters } = this.state;
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    },() => {
+      const { letters, letterTo } = this.state;
 
-    axios
-      .post(`/funeral/updatefuneral/${this.state.user.funeral}`, { letters })
-      .then(response => {
-        console.log("NEW DATA:", response.data);
-      })
-      .catch(err => console.log(err));
-  };
-
-  handleAddLetters = e => {
-    e.preventDefault();
-
-    const letter = e.target.letter.value;
-    const letterTo = e.target.letterTo.value;
-
-    this.setState(
-      {
-        letters: this.state.letters.concat({
-          letter: letter,
-          letterTo: letterTo
-        })
-      },
-      () => console.log("Changes in state:", this.state)
-    );
+    this.updateFuneral({ letters: letters, letterTo: letterTo });
+    });
   };
 
   render() {

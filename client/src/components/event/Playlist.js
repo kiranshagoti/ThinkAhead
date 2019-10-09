@@ -6,9 +6,9 @@ import { Form, Label, Button } from "react-bootstrap";
 
 export default class Playlist extends Component {
   state = {
-    user: this.props.user,
     song: "",
     artist: "",
+    user: this.props.user,
     playlist: []
   };
 
@@ -29,18 +29,24 @@ export default class Playlist extends Component {
       .catch(err => console.log(err));
   };
 
-  // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const { playlist } = this.state;
-
-    axios
-      .post(`/funeral/updatefuneral/${this.state.user.funeral}`, { playlist })
-      .then(response => {
-        console.log("NEW DATA:", response.data);
-      })
-      .catch(err => console.log(err));
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        const playlist = this.state.playlist;
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+            playlist
+          })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
+    );
   };
 
   handleChange = e => {
@@ -62,7 +68,18 @@ export default class Playlist extends Component {
         artist: "",
         playlist: this.state.playlist.concat({ song: song, artist: artist })
       },
-      () => console.log("CHANGES IN STATE:", this.state)
+      () => {
+        const { playlist } = this.state;
+
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+            playlist
+          })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
     );
   };
 
@@ -82,10 +99,32 @@ export default class Playlist extends Component {
 
     return (
       <>
-        <div className="usersPlaylist">
+        <div>
           <h4>Your playlist</h4>
           {userPlaylist}
         </div>
+
+        <form onSubmit={this.handleAddSong}>
+          <label>Song</label>
+          <input
+            type="text"
+            name="song"
+            placeholder="Add song"
+            value={this.state.song}
+            onChange={this.handleChange}
+          />
+
+          <label>Artist</label>
+          <input
+            type="text"
+            name="artist"
+            placeholder="Add artist"
+            value={this.state.artist}
+            onChange={this.handleChange}
+          />
+
+          <button type="submit">Add Song</button>
+        </form>
 
         <form onSubmit={this.handleAddSong}>
           <label>Song</label>
@@ -105,9 +144,7 @@ export default class Playlist extends Component {
             onChange={this.handleChange}
             value={this.state.artist}
           />
-          <button type="submit">
-            Add Song
-          </button>
+          <button type="submit">Add Song</button>
         </form>
         <div>
           <Switch>

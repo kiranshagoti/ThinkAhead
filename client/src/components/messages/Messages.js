@@ -58,16 +58,52 @@ export class Messages extends Component {
         </Switch>
 
         <Link to="/messages/letters">
-          <button type="button">letter icon</button>
+          <button>letter icon</button>
+          <div>Letters</div>
         </Link>
 
         <Link to="/messages/quotes">
-          <button type="button">""</button>
+          <button> "" </button>
+          <div>Quotes</div>
         </Link>
 
         <Link to="/messages/documents">
-          <button type="button"> document icon </button>
+          <button> document icon </button>
+          <div>Documents</div>
         </Link>
+        <Route
+          exact
+          path="/messages/letters"
+          render={props => (
+            <Letters
+              user={this.state.user}
+              updateFuneral={this.updateFuneral}
+              {...props}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/messages/quotes"
+          render={props => (
+            <Quotes
+              user={this.state.user}
+              updateFuneral={this.updateFuneral}
+              {...props}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/messages/documents"
+          render={props => (
+            <Documents
+              user={this.state.user}
+              updateFuneral={this.updateFuneral}
+              {...props}
+            />
+          )}
+        />
       </div>
     );
   }

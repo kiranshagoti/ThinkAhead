@@ -32,7 +32,8 @@ import FormUserComponent from "./components/FormUserComponent";
 import Settings from "./components/Settings";
 import Playlist from "./components/event/Playlist";
 import AddSong from "./components/event/AddSong";
-import Letterscollection from "./components/messages/Letterscollection";
+import Protected from "./components/Protected";
+import Eventlocation from './components/event/Eventlocation';
 
 const NotFound = () => {
   return <div>Page not found</div>;
@@ -50,13 +51,13 @@ class App extends React.Component {
   };
 
   render() {
+    const funeralId = this.state.user && this.state.user.funeral;
+
     return (
       <div className="App">
-        <Navbar />
+        <Navbar setUser={this.setUser} />
         <Switch>
-          {/*  */}
           <Route exact path="/welcome" component={FormUserComponent} />
-          {/*  */}
 
           <Route
             exact
@@ -68,104 +69,137 @@ class App extends React.Component {
             path="/login"
             render={props => <Login setUser={this.setUser} {...props} />}
           />
-          <Route
-            exact
-            path="/"
-            render={props => <Home user={this.state.user} {...props} />}
-          />
+
+          <Protected exact path="/" user={this.state.user} component={Home} />
+
           <Route exact path="/legal" component={Legal} />
           <Route exact path="/about" component={About} />
           <Route exact path="/team" component={Team} />
-          <Route exact path="/profile" component={Profile} />
+
+          <Protected
+            exact
+            path="/profile"
+            user={this.state.user}
+            component={Profile}
+          />
           <Route exact path="/explore" component={Explore} />
-          <Route
+          <Protected
             exact
             path="/share-funeral-plans"
+            user={this.state.user}
             component={ShareFuneralPlan}
           />
-          <Route
+          <Protected
             exact
             path="/share-funeral-plans/add-contact"
+            user={this.state.user}
             component={AddContact}
           />
-          <Route path="/about" component={About} />
-          <Route path="/team" component={Team} />
-          <Route path="/settings" component={Settings} />
+          <Protected
+            path="/settings"
+            user={this.state.user}
+            component={Settings}
+          />
           {/* <Articles /> */}
-          <Route
+          <Protected
+            exact
             path="/body"
-            render={props => <Body user={this.state.user} {...props} />}
+            user={this.state.user}
+            component={Body}
           />
-          <Route exact path="/body/location" component={Location}></Route>
-          <Route exact path="/body/handlebody" component={HandleBody}></Route>
+          <Protected
+            exact
+            path="/body/handlebody"
+            user={this.state.user}
+            component={HandleBody}
+          />
+          <Protected
+            exact
+            path="/body/location"
+            user={this.state.user}
+            component={Location}
+          />
 
-          {/* <Route exact path="/messages" component={Messages}></Route>
-          <Route exact path="/messages/letters" component={Letters}></Route>
-          <Route exact path="/messages/quotes" component={Quotes}></Route>
-          <Route exact path="/messages/documents" component={Documents}></Route>  */}
+          {/* <Protected exact path="/messages"  user={this.state.user} component={Messages}/>
+          <Protected exact path="/messages/letters" user={this.state.user} component={Letters}/> */}
+          {/* <Protected exact path="/messages/quotes" user={this.state.user} component={Quotes}/>
+          <Protected exact path="/messages/documents" user={this.state.user} component={Documents}/> */}
 
-          <Route
+          <Protected
+            exact
             path="/event"
-            render={props => <Event user={this.state.user} {...props} />}
+            user={this.state.user}
+            component={Event}
           />
-          <Route exact path="/event/vibe" component={Vibe} />
+          <Protected
+            exact
+            path="/event/vibe"
+            user={this.state.user}
+            component={Vibe}
+          />
+          <Protected
+            exact
+            path="/event/eventlocation"
+            user={this.state.user}
+            component={Eventlocation}
+          />
 
-          <Route
+<Protected
+            exact
+            path="/event/memories"
+            user={this.state.user}
+            component={Memories}
+          />
+
+          <Protected
             exact
             path="/messages"
-            render={props => <Messages user={this.state.user} {...props} />}
-          ></Route>
-          <Route
+            user={this.state.user}
+            component={Messages}
+          />
+          <Protected
             exact
             path="/messages/letters"
-            render={props => <Letters user={this.state.user} {...props} />}
-          ></Route>
-          <Route
+            user={this.state.user}
+            component={Letters}
+          />
+          <Protected
             exact
             path="/messages/quotes"
-            render={props => <Quotes user={this.state.user} {...props} />}
+            user={this.state.user}
+            component={Quotes}
           />
-          <Route exact path="/messages/documents" component={Documents}></Route>
-          <Route path="/funeral/event" component={Event} />
-          <Route exact path="/vibe" component={Vibe} />
-          <Route exact path="/event/playlist" component={Playlist}></Route>
-          <Route
+          <Protected
+            exact
+            path="/messages/documents"
+            user={this.state.user}
+            component={Documents}
+          />
+          <Protected
+            exact
+            path="/funeral/event"
+            user={this.state.user}
+            component={Event}
+          />
+          <Protected
+            exact
+            path="/event/playlist"
+            user={this.state.user}
+            component={Playlist}
+          />
+          <Protected
             exact
             path="/event/playlist/AddSong"
+            user={this.state.user}
             component={AddSong}
-          ></Route>
-
-          <Route
-            exact
-            path="/"
-            render={props => <Home user={this.state.user} {...props} />}
-          />
-          <Route
-            exact
-            path="/body"
-            render={props => <Body user={this.state.user} {...props} />}
           />
 
-          <Route
-            exact
-            path="/"
-            render={props => <Home user={this.state.user} {...props} />}
-          />
-          <Route
-            exact
-            path="/body"
-            render={props => <Body user={this.state.user} {...props} />}
-          />
-
-          <Route path="/about" component={About} />
-          <Route path="/team" component={Team} />
-
-          <Route
+          {/* <Route
             path="/messages/letters/letterscollection"
             render={props => (
               <Letterscollection user={this.state.user} {...props} />
             )}
-          />
+          /> */}
           <Route component={NotFound} />
         </Switch>
         <BottomNavbar />

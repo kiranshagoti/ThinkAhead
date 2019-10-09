@@ -8,17 +8,9 @@ const User = require("../models/User");
 
 
 //###############
-const loginCheck = () => {
-  return (req, res, next) => {
-    if (req.user) {
-      next();
-    } else {
-      res.redirect("/auth");
-    }
-  };
-};
-router.post("/", loginCheck(), (req, res, next) => {
-  const newFuneral = req.newFuneral;
+
+router.post("/", (req, res, next) => {
+  // const newFuneral = req.newFuneral;
   const { event, body, details, theChosen } = req.body;
   User.findOneAndUpdate(
     { _id: user._id },

@@ -14,12 +14,12 @@ export default class Event extends Component {
   render() {
     return (
       <div className="event-container">
-        {/* <div>
+        <div>
           Would you like to ask people to speak?
           <Link to="/performance">
             <button type="button">Arrow-btn</button>
           </Link>
-        </div> */}
+        </div>
         <Switch>
           <Route
             exact

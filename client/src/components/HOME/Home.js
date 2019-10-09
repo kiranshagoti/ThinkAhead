@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MainPlan from "./MainPlan";
 import Articles from "./Articles";
-import Navbar from "./Navbar";
 import BottomNavbar from "./BottomNavbar";  
 import {Link} from 'react-router-dom' 
 

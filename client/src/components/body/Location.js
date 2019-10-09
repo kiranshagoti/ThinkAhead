@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Form } from "react-bootstrap";
+
 
 
 class Location extends Component {
@@ -26,18 +26,7 @@ componentDidMount = () => {
   }).catch(err => console.log(err))
 }
 
-// UPDATE FUNERAL
-handleSubmit = event => {
-    
-  event.preventDefault();
 
-  const {finalRestAddress} = this.state
-  
-  axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {finalRestAddress}).then(response => {
-    console.log('NEW DATA:',response.data)
-  
-  }).catch(err => console.log(err))
-};
 
 // UPDATE STATE
 handleChange = e => {
@@ -47,25 +36,24 @@ handleChange = e => {
   this.setState({
   
     [name]:value
-  })
+  },() => {
+  const {finalRestAddress} = this.state
+  
+  axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {finalRestAddress}).then(response => {
+    console.log('NEW DATA:',response.data)
+  
+  }).catch(err => console.log(err))
+})
 }
 
  render() {
    return (
      <div>
-       <Form onSubmit={this.handleSubmit}>
-         <Form.Group>
-           <Form.Label>Final Rest</Form.Label>
-           <Form.Control
-             type="text"
-             name="finalRestAddress"
-             value={this.state.finalRestAddress}
-             onChange={this.handleChange}
-             placeholder="final rest location"
-           />
-         </Form.Group>
-         <input type="submit" value="Submit" />{" "}
-       </Form>
+       
+       <form>
+       <label><h3>Final Rest</h3></label>
+       <input type='text' name='finalRestAddress' value={this.state.finalRestAddress} placeholder='Where' onChange={this.handleChange}/>
+       </form>
      </div>
    );
  }
