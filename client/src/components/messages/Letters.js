@@ -6,12 +6,18 @@ import axios from "axios";
 export class Letters extends Component {
   state = {
     letters: "",
-    letterTo: ""
+    letterTo: "",
+    user:this.props.user,
+    letters:[]
   };
+
+
 
   componentDidMount = () => {
     console.log(this.props);
   };
+
+
 
   updateFuneral = toUpdate => {
     axios
@@ -24,16 +30,15 @@ export class Letters extends Component {
       });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const { letters, letterTo } = this.state;
-
-    this.updateFuneral({ letters: letters, letterTo: letterTo });
-  };
+  
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
+    },() => {
+      const { letters, letterTo } = this.state;
+
+    this.updateFuneral({ letters: letters, letterTo: letterTo });
     });
   };
 
