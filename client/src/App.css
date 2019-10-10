@@ -1,5 +1,6 @@
 body{
-  width:100vw  
+  width:100vw;
+ 
 }
 
 .App {
@@ -77,5 +78,9 @@ body{
   text-decoration: none;
 }
 
-
+.bar {
+  width: 207px;
+  height: 44px;
+  object-fit: contain;
+}
 

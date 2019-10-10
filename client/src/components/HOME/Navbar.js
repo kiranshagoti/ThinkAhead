@@ -45,7 +45,6 @@ export default class Navbar extends Component {
                         <li><Link to ="/explore">EXPLORE</Link></li>
                         <li><Link to ="/share-funeral-plans">SHARE FUNERAL PLANS</Link></li>
                         <li><Link to ="/legal">LEGAL</Link></li>
-                        
                         <li><Link to ="/settings">SETTINGS</Link></li>
                         <button onClick={(props) => this.handleLogout(props)}>LOGOUT</button>
                 </ul>
