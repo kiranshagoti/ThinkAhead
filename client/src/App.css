@@ -92,3 +92,9 @@ body {
   text-align: center;
   background-color: white;
 }
+.bar {
+  width: 207px;
+  height: 44px;
+  object-fit: contain;
+}
+
