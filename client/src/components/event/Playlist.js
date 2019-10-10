@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-=======
 import Event from "./Event";
 import { Link, Route, Switch } from "react-router-dom";
 import { Form, Label, Button } from "react-bootstrap";
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
 
 export default class Playlist extends Component {
   state = {
