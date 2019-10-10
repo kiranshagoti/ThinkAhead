@@ -1,62 +1,69 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
-
 class Location extends Component {
-
   state = {
-    user:this.props.user,
+    user: this.props.user,
     finalRestAddress: ""
   };
 
-// GET FUNERAL
-componentDidMount = () => {
+  // GET FUNERAL
+  componentDidMount = () => {
+    axios
+      .get(`/funeral/${this.state.user.funeral}`)
+      .then(response => {
+        const { finalRestAddress } = response.data;
 
-  axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
+        this.setState(
+          {
+            finalRestAddress
+          },
+          () => console.log("FUNERAL IN LOCATION STATE:", this.state)
+        );
+      })
+      .catch(err => console.log(err));
+  };
 
-    const {finalRestAddress} = response.data
-    
-    this.setState({
+  // UPDATE STATE
+  handleChange = e => {
+    const { name, value } = e.target;
 
-      finalRestAddress
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        const { finalRestAddress } = this.state;
 
-    },() => console.log('FUNERAL IN LOCATION STATE:',this.state))
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+            finalRestAddress
+          })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
+    );
+  };
 
-  }).catch(err => console.log(err))
-}
-
-
-
-// UPDATE STATE
-handleChange = e => {
-
-  const {name, value} = e.target
-  
-  this.setState({
-  
-    [name]:value
-  },() => {
-  const {finalRestAddress} = this.state
-  
-  axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {finalRestAddress}).then(response => {
-    console.log('NEW DATA:',response.data)
-  
-  }).catch(err => console.log(err))
-})
-}
-
- render() {
-   return (
-     <div>
-       
-       <form>
-       <label><h3>Final Rest</h3></label>
-       <input type='text' name='finalRestAddress' value={this.state.finalRestAddress} placeholder='Where' onChange={this.handleChange}/>
-       </form>
-     </div>
-   );
- }
+  render() {
+    return (
+      <div>
+        <form>
+          <label>
+            <h3>Final Rest</h3>
+          </label>
+          <input
+            type="text"
+            name="finalRestAddress"
+            value={this.state.finalRestAddress}
+            placeholder="Where"
+            onChange={this.handleChange}
+          />
+        </form>
+      </div>
+    );
+  }
 }
 export default Location;
-

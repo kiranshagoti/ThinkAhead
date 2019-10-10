@@ -3,62 +3,63 @@ import axios from "axios";
 import { Form, Label, Button } from "react-bootstrap";
 
 export default class Vibe extends Component {
-
   state = {
-    user:this.props.user,
+    user: this.props.user,
     food: "",
     dressCode: "",
-    kindOfVibe:'',
-    flowers: "",
-
+    kindOfVibe: "",
+    flowers: ""
   };
-
-  
 
   // COMPONEN DID MOUNT ---> GET FUNERAL
   componentDidMount = () => {
+    axios
+      .get(`/funeral/${this.state.user.funeral}`)
+      .then(response => {
+        const { food, dressCode, kindOfVibe, flowers } = response.data;
 
-    axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
-
-      const {food, dressCode, kindOfVibe, flowers} = response.data
-      
-      this.setState({
-        food,
-        dressCode,
-        kindOfVibe,
-        flowers
-
-      },() => console.log('FUNERAL IN VIBE STATE:',this.state))
-
-    }).catch(err => console.log(err))
-  }
-
-
-
-  
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-        [name]: value
-      },() => {
-        const {food, dressCode, kindOfVibe, flowers} = this.state
-    
-    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {food, dressCode, kindOfVibe, flowers}).then(response => {
-      console.log('NEW DATA:',response.data)
-    
-    }).catch(err => console.log(err))
-      });
+        this.setState(
+          {
+            food,
+            dressCode,
+            kindOfVibe,
+            flowers
+          },
+          () => console.log("FUNERAL IN VIBE STATE:", this.state)
+        );
+      })
+      .catch(err => console.log(err));
   };
 
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        const { food, dressCode, kindOfVibe, flowers } = this.state;
 
-  
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+            food,
+            dressCode,
+            kindOfVibe,
+            flowers
+          })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
+    );
+  };
 
   render() {
     return (
       <div>
-        <Form >
-
-        <Form.Group>
+        <Form>
+          <Form.Group>
             <Form.Label>Vibe</Form.Label>
             <Form.Control
               type="text"
@@ -68,7 +69,6 @@ export default class Vibe extends Component {
               placeholder="kind of vibe"
             />
           </Form.Group>
-
 
           <Form.Group>
             <Form.Label>Food</Form.Label>
@@ -100,7 +100,6 @@ export default class Vibe extends Component {
               placeholder="Let your planer know what flowers you love the most"
             />
           </Form.Group>
-
         </Form>
       </div>
     );

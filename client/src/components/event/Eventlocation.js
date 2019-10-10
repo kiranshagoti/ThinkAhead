@@ -1,10 +1,10 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import { Form, Label, Button } from "react-bootstrap";
 
- class Eventlocation extends Component {
+class Eventlocation extends Component {
   state = {
-    user:this.props.user,
+    user: this.props.user,
     eventLocation: "",
     eventAddress: "",
     invite: []
@@ -12,49 +12,50 @@ import { Form, Label, Button } from "react-bootstrap";
 
   // COMPONEN DID MOUNT ---> GET FUNERAL
   componentDidMount = () => {
+    axios
+      .get(`/funeral/${this.state.user.funeral}`)
+      .then(response => {
+        const { eventLocation, eventAddress, invite } = response.data;
 
-    axios.get(`/funeral/${this.state.user.funeral}`).then(response => {
+        this.setState(
+          {
+            eventLocation,
+            eventAddress,
+            invite
+          },
+          () => console.log("FUNERAL IN HANDLEBODY STATE:", this.state)
+        );
+      })
+      .catch(err => console.log(err));
+  };
 
-      const {eventLocation, eventAddress, invite} = response.data
-      
-      this.setState({
+  // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const { eventLocation, eventAddress, invite } = this.state;
+
+    axios
+      .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
         eventLocation,
         eventAddress,
         invite
-
-      },() => console.log('FUNERAL IN HANDLEBODY STATE:',this.state))
-
-    }).catch(err => console.log(err))
-  }
-
-// UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    
-    event.preventDefault();
-
-    const {eventLocation, eventAddress, invite} = this.state
-    
-    axios.post(`/funeral/updatefuneral/${this.state.user.funeral}`, {eventLocation, eventAddress, invite}).then(response => {
-      console.log('NEW DATA:',response.data)
-    
-    }).catch(err => console.log(err))
+      })
+      .then(response => {
+        console.log("NEW DATA:", response.data);
+      })
+      .catch(err => console.log(err));
   };
 
-
-
-
-
-
-
-
-  
   handleChange = event => {
     const { name, value } = event.target;
-    this.setState({
+    this.setState(
+      {
         [name]: value
-      },() => console.log('CHANGES IN STATE:',this.state));
+      },
+      () => console.log("CHANGES IN STATE:", this.state)
+    );
   };
-
 
   render() {
     return (
@@ -78,7 +79,7 @@ import { Form, Label, Button } from "react-bootstrap";
               placeholder="Adress"
             />
           </Form.Group>
-          
+
           <Button type="submit">Update funeral</Button>
         </Form>
       </div>

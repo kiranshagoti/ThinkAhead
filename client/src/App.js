@@ -100,7 +100,6 @@ class App extends React.Component {
             user={this.state.user}
             component={Settings}
           />
-          {/* <Articles /> */}
           <Protected
             exact
             path="/body"
@@ -119,6 +118,7 @@ class App extends React.Component {
             user={this.state.user}
             component={Location}
           />
+          {/* <Articles /> */}
 
           {/* <Protected exact path="/messages"  user={this.state.user} component={Messages}/>
           <Protected exact path="/messages/letters" user={this.state.user} component={Letters}/> */}
@@ -144,6 +144,18 @@ class App extends React.Component {
             component={Eventlocation}
           />
 
+          <Protected
+            exact
+            path="/event/playlist"
+            user={this.state.user}
+            component={Playlist}
+          />
+          <Protected
+            exact
+            path="/event/playlist/AddSong"
+            user={this.state.user}
+            component={AddSong}
+          />
 <Protected
             exact
             path="/event/memories"
@@ -180,18 +192,6 @@ class App extends React.Component {
             path="/funeral/event"
             user={this.state.user}
             component={Event}
-          />
-          <Protected
-            exact
-            path="/event/playlist"
-            user={this.state.user}
-            component={Playlist}
-          />
-          <Protected
-            exact
-            path="/event/playlist/AddSong"
-            user={this.state.user}
-            component={AddSong}
           />
 
           <Route component={NotFound} />
