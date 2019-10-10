@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-=======
 import Event from "./Event";
 import { Link, Route, Switch } from "react-router-dom";
 import { Form, Label, Button } from "react-bootstrap";
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
 
 export default class Playlist extends Component {
   state = {
@@ -92,17 +89,10 @@ export default class Playlist extends Component {
       this.state.playlist.map(x => {
         return (
           <div key={x.artist + x.song}>
-<<<<<<< HEAD
-            <p>
-              <b>{x.artist}</b>
-            </p>
-            <p>{x.song}</p>
-=======
             <div>
               <b>{x.artist} </b>
               {x.song}
             </div>
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
           </div>
         );
       });
@@ -147,34 +137,6 @@ export default class Playlist extends Component {
 
           <button type="submit">Add Song</button>
         </form>
-<<<<<<< HEAD
-=======
-
-        <div>
-          <Switch>
-            <Route
-              exact
-              path="/event"
-              render={() => (
-                <Event
-                  user={this.state.user}
-                  funeralId={this.state.user.funeral}
-                />
-              )}
-            ></Route>
-          </Switch>
-
-          <Link to="/event">
-            <Button
-              type="button"
-              onClick={this.handleSubmit}
-              onClick={this.routeChange}
-            >
-              Arrowbtn-updatesfuneral and takes us back to Event
-            </Button>
-          </Link>
-        </div>
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
       </>
     );
   }

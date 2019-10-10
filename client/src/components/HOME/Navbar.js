@@ -33,6 +33,8 @@ export default class Navbar extends Component {
             transitionDuration: '0.5s'
         }
         return (
+            <>
+            {this.props.user.data &&
             <div className='homeNavbar' style={{position:'absolute'}}>
                 {!this.state.showMenu &&  <button onClick={this.showMenu}>SHOW</button>}
             <div style={this.state.showMenu ? displayed : hide}>
@@ -51,6 +53,8 @@ export default class Navbar extends Component {
                 </nav>
                 </div>
             </div>
+            }
+            </>
         )
     }
 }

@@ -15,7 +15,7 @@ export class Messages extends Component {
     return (
       <div className="messages-container">
         <div>
-          {" "}
+
           Write letters to your loved ones and share your favorite quotes
         </div>
 
@@ -58,17 +58,17 @@ export class Messages extends Component {
         </Switch>
 
         <Link to="/messages/letters">
-          <button>letter icon</button>
+
           <div>Letters</div>
         </Link>
 
         <Link to="/messages/quotes">
-          <button> "" </button>
+
           <div>Quotes</div>
         </Link>
 
         <Link to="/messages/documents">
-          <button> document icon </button>
+
           <div>Documents</div>
         </Link>
       </div>

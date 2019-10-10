@@ -40,6 +40,8 @@ export default class Login extends Component {
   render() {
     return (
       <>
+      <div className='welcome' id="login">
+      
         <h2>Login</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
@@ -72,6 +74,7 @@ export default class Login extends Component {
             <button>Signup</button>
           </Link>
         </Form>
+        </div>
       </>
     );
   }

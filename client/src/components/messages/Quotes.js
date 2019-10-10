@@ -30,6 +30,7 @@ export class Quotes extends Component {
     event.preventDefault();
     const { quote, quoteBy } = this.state;
     const quoteObject = { quote, quoteBy };
+    
     this.setState(
       {
         quote: "",

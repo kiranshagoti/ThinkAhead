@@ -30,7 +30,6 @@ class Eventlocation extends Component {
       })
       .catch(err => console.log(err));
   };
-<<<<<<< HEAD
 
   // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
   handleSubmit = event => {
@@ -38,15 +37,6 @@ class Eventlocation extends Component {
 
     const { eventLocation, eventAddress, invite } = this.state;
 
-=======
-
-  // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const { eventLocation, eventAddress, invite } = this.state;
-
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
     axios
       .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
         eventLocation,
