@@ -195,6 +195,12 @@ class App extends React.Component {
             component={AddSong}
           />
 
+          {/* <Route
+            path="/messages/letters/letterscollection"
+            render={props => (
+              <Letterscollection user={this.state.user} {...props} />
+            )}
+          /> */}
           <Route component={NotFound} />
         </Switch>
       </div>

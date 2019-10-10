@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Letters from "./Letters";
 import Quotes from "./Quotes";
 import Documents from "./Documents";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 export class Messages extends Component {
@@ -11,34 +11,51 @@ export class Messages extends Component {
     funeral: null
   };
 
-  componentDidMount = () => {
-    console.log(this.props.user);
-    axios
-      .get(`/funeral/${this.state.user.funeral}`)
-      .then(response => {
-        console.log("axios get:", response.data);
-        this.setState({
-          funeral: response.data
-        });
-      })
-      .catch(err => console.log(err));
-  };
-
-  // updateFuneral = toUpdate => {
-  //   axios
-  //     .post(`/updateFuneral/${this.state.funeral._id}`, toUpdate)
-  //     .then(response => {
-  //       console.log(response.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
   render() {
     return (
-      <div>
-        <p> Write letters to your loved ones and share your favorite quotes</p>
+      <div className="messages-container">
+        <div>
+          {" "}
+          Write letters to your loved ones and share your favorite quotes
+        </div>
+
+        <Switch>
+          <Route
+            exact
+            path="/messages/letters"
+            render={props => (
+              <Letters
+                user={this.state.user}
+                updateFuneral={this.updateFuneral}
+                {...props}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/messages/quotes"
+            render={props => (
+              <Quotes
+                user={this.state.user}
+                updateFuneral={this.updateFuneral}
+                {...props}
+              />
+            )}
+          />
+
+          <Route
+            exact
+            path="/messages/documents"
+            render={props => (
+              <Documents
+                user={this.state.user}
+                updateFuneral={this.updateFuneral}
+                {...props}
+              />
+            )}
+          />
+        </Switch>
 
         <Link to="/messages/letters">
           <button>letter icon</button>
@@ -54,39 +71,6 @@ export class Messages extends Component {
           <button> document icon </button>
           <div>Documents</div>
         </Link>
-        <Route
-          exact
-          path="/messages/letters"
-          render={props => (
-            <Letters
-              user={this.state.user}
-              updateFuneral={this.updateFuneral}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/messages/quotes"
-          render={props => (
-            <Quotes
-              user={this.state.user}
-              updateFuneral={this.updateFuneral}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/messages/documents"
-          render={props => (
-            <Documents
-              user={this.state.user}
-              updateFuneral={this.updateFuneral}
-              {...props}
-            />
-          )}
-        />
       </div>
     );
   }
