@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 const questions = [
   {
     name: "thoughtAboutFuneral",
@@ -16,36 +15,40 @@ const questions = [
     name: "kindOfVibe",
     q: "What kind of vibe ?",
     a: ["sad", "happy"]
-  } /*,
-    {
-        name: 'clothes',
-        q: "What do you want to wear ?",
-        a: ''
-    }*/
+  } 
 ];
-
 class FormUserComponent extends Component {
   state = {
-    step: 1,
+    step: 0,
     thoughtAboutFuneral: false,
     howToBeBuried: false,
     kindOfVibe: false,
-    documents: false,
     showPopUp: false,
     popUpContent: ""
   };
   popUp = q => {
     let content = "";
     if (q === "thoughtAboutFuneral") {
-      content = "blabla funerals";
+      content = (
+        <div className='Q-popup'>
+          <p>Well, there are a lot of possibilities. You can even be a diamond. Checkout our articles for some ideas!</p>
+          <button onClick={this.setState({showPopUp: false})}>ok</button>
+        </div>
+      );
     } else if (q === "howToBeBuried") {
-      content = "bliblo burried";
+      content = (
+        <div className='Q-popup'>
+          <p>Well, there are a lot of possibilities. You can even be a diamond. Checkout our articles for some ideas!</p>
+          <button onClick={this.setState({showPopUp: false})}>ok</button>
+        </div>
+      );
     }
     this.setState({
       showPopUp: true,
       popUpContent: content
     });
   };
+  
   handleChange = e => {
     console.log(e.target);
     const { name, value } = e.target;
@@ -57,9 +60,9 @@ class FormUserComponent extends Component {
     );
   };
   answerQuestion = (q, a) => {
-    if (a === "no" || a === "I don't know") {
-      this.popUp(q);
-    }
+    // if (a === "no" || a === "I don't know") {
+    //   this.popUp(q);
+    // }
     this.setState(
       {
         [q]: a,
@@ -68,49 +71,47 @@ class FormUserComponent extends Component {
       () => console.log(this.state)
     );
   };
-
   //
   handleSubmit = e => {
     e.preventDefault();
-    const { howToBeBuried, kindOfVibe, documents } = this.state;
-    console.log(howToBeBuried, kindOfVibe, documents);
+    const { howToBeBuried, kindOfVibe } = this.state;
+    console.log(howToBeBuried, kindOfVibe);
     // Do axios post request here
     axios
-      .post("/funeral/new", { howToBeBuried, kindOfVibe, documents })
+      .post("/funeral/new", { howToBeBuried, kindOfVibe })
       .then(response => {
         console.log(response.data);
       })
       .catch(err => console.log(err));
     this.props.history.push("/");
   };
-
   render() {
     const questionsMap = questions.map((x, i) => {
       return (
+        
         <div>
-          <label>{x.q}</label>
+          <label>{x.q}</label><br/>
+        
           {x.a.map(a => {
+        
             return (
               <>
-                <button
-                  onClick={e => {
-                    e.preventDefault();
+                <button className="Q-btn"onClick={e => {
+                  e.preventDefault();
                     this.answerQuestion(x.name, a);
-                  }}
-                >
-                  {a}
-                </button>
+                  }}>{a}</button>
               </>
             );
           })}
         </div>
       );
     });
+    //########
     const renderedForm = (
       <form>
-        {questionsMap[this.state.step - 1]}
+        {questionsMap[this.state.step]}
         {this.state.step < questions.length ? (
-          <button
+          <button className='Q-skip'
             onClick={e => {
               e.preventDefault();
               this.answerQuestion(null, "");
@@ -119,17 +120,20 @@ class FormUserComponent extends Component {
             Skip
           </button>
         ) : (
-          <button onClick={this.handleSubmit}>Done</button>
+          <button className='Q-skip' onClick={this.handleSubmit}>Done</button>
         )}
       </form>
     );
     return (
       <>
+      <div className='welcome'>
+        <div className='rectangle'>
         {renderedForm}
+        </div>
         {this.state.showPopUp && <div>{this.state.popUpContent}</div>}
+        </div>
       </>
     );
   }
 }
-
 export default FormUserComponent;

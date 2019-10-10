@@ -29,7 +29,7 @@ export default class Settings extends Component {
     // let canDelete = false;
     // if (currentUser && currentUser._id === owner) canDelete = true;
     return (
-      <div>
+      <div className='settingsContainer'>
         <h1>Account Settings for {this.props.user.username}</h1>
 
         <hr />
@@ -65,9 +65,9 @@ export default class Settings extends Component {
         <p>{this.props.user.email}</p> */}
 
         {/* {canDelete && ( */}
-          <Button variant="danger" onClick={this.deleteUser}>
+          <button className='delete-btn' variant="danger" onClick={this.deleteUser}>
             Delete User
-          </Button>
+          </button>
         {/* )} */}
           </div>
       

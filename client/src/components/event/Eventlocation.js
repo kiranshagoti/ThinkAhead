@@ -30,23 +30,34 @@ class Eventlocation extends Component {
       })
       .catch(err => console.log(err));
   };
-<<<<<<< HEAD
 
   // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
   handleSubmit = event => {
     event.preventDefault();
 
-    const { eventLocation, eventAddress, invite } = this.state;
+    // const { eventLocation, eventAddress, invite } = this.state;
 
-=======
+    // axios
+    //   .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+    //     eventLocation,
+    //     eventAddress,
+    //     invite
+    //   })
+    //   .then(response => {
+    //     console.log("NEW DATA:", response.data);
+    //   })
+    //   .catch(err => console.log(err));
+  };
 
-  // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
-  handleSubmit = event => {
-    event.preventDefault();
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        const { eventLocation, eventAddress, invite } = this.state;
 
-    const { eventLocation, eventAddress, invite } = this.state;
-
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
     axios
       .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
         eventLocation,
@@ -57,24 +68,67 @@ class Eventlocation extends Component {
         console.log("NEW DATA:", response.data);
       })
       .catch(err => console.log(err));
+      })
+  
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState(
-      {
-        [name]: value
-      },
-      () => console.log("CHANGES IN STATE:", this.state)
-    );
-  };
+  // render() {
+  //   return (
+  //     <div>
+  //       <Form onSubmit={this.handleSubmit}>
+  //         <Form.Group>
+  //           <Form.Control
+  //             type="text"
+  //             name="eventLocation"
+  //             value={this.state.eventLocation}
+  //             onChange={this.handleChange}
+  //             placeholder="Where do you want people to celebrate your life?"
+  //           />
+  //         </Form.Group>
+  //         <Form.Group>
+  //           <Form.Control
+  //             type="text"
+  //             name="eventAddress"
+  //             value={this.state.eventAddress}
+  //             onChange={this.handleChange}
+  //             placeholder="Adress"
+  //           />
+  //         </Form.Group>
 
+  //         <Button type="submit">Update funeral</Button>
+  //       </Form>
+  //       <Switch>
+  //         <Route
+  //           exact
+  //           path="/event"
+  //           render={() => (
+  //             <Event
+  //               user={this.state.user}
+  //               funeralId={this.state.user.funeral}
+  //             />
+  //           )}
+  //         ></Route>
+  //       </Switch>
+
+  //       {/* <Link to="/event">
+  //         <Button
+  //           type="button"
+  //           onClick={this.handleSubmit}
+  //           onClick={this.routeChange}
+  //         >
+  //           Arrowbtn-updatesfuneral and takes us back to Event
+  //         </Button>
+  //       </Link> */}
+  //     </div>
+  //   );
   render() {
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Control
+            className="event-form"
+              align="center"
               type="text"
               name="eventLocation"
               value={this.state.eventLocation}
@@ -84,6 +138,8 @@ class Eventlocation extends Component {
           </Form.Group>
           <Form.Group>
             <Form.Control
+            className="event-form"
+              align="center"
               type="text"
               name="eventAddress"
               value={this.state.eventAddress}
@@ -91,8 +147,8 @@ class Eventlocation extends Component {
               placeholder="Adress"
             />
           </Form.Group>
-
-          <Button type="submit">Update funeral</Button>
+​
+          <Button type="submit">SAVE</Button>
         </Form>
         <Switch>
           <Route
@@ -106,18 +162,9 @@ class Eventlocation extends Component {
             )}
           ></Route>
         </Switch>
-
-        <Link to="/event">
-          <Button
-            type="button"
-            onClick={this.handleSubmit}
-            onClick={this.routeChange}
-          >
-            Arrowbtn-updatesfuneral and takes us back to Event
-          </Button>
-        </Link>
       </div>
     );
   }
+  
 }
 export default Eventlocation;

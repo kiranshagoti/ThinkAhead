@@ -73,24 +73,31 @@ export default class Vibe extends Component {
     );
   };
 
+  // 
   render() {
     return (
       <div>
+        <h1>Details</h1>
+​
         <Form>
           <Form.Group>
             <Form.Label>Vibe</Form.Label>
             <Form.Control
+              className="event-form"
+              align="center"
               type="text"
               name="kindOfVibe"
               value={this.state.kindOfVibe}
               onChange={this.handleChange}
-              placeholder="kind of vibe"
+              placeholder="happy/sad"
             />
           </Form.Group>
-
+​
           <Form.Group>
             <Form.Label>Food</Form.Label>
             <Form.Control
+              className="event-form"
+              align="center"
               type="text"
               name="food"
               value={this.state.food}
@@ -101,6 +108,8 @@ export default class Vibe extends Component {
           <Form.Group>
             <Form.Label>Dresscode</Form.Label>
             <Form.Control
+              className="event-form"
+              align="center"
               type="text"
               name="dressCode"
               value={this.state.dressCode}
@@ -111,6 +120,8 @@ export default class Vibe extends Component {
           <Form.Group>
             <Form.Label>Flowers</Form.Label>
             <Form.Control
+              className="event-form"
+              align="center"
               type="text"
               name="flowers"
               value={this.state.flowers}
@@ -132,16 +143,9 @@ export default class Vibe extends Component {
               )}
             ></Route>
           </Switch>
-
-          <Link to="/event">
-            <Button
-              type="button"
-              onClick={this.handleSubmit}
-              onClick={this.routeChange}
-            >
-              Arrowbtn-updatesfuneral and takes us back to Event
-            </Button>
-          </Link>
+          <Button type="button" onClick={this.handleSubmit}>
+            Save Details
+          </Button>
         </div>
       </div>
     );

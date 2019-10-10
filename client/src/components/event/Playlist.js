@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-=======
 import Event from "./Event";
 import { Link, Route, Switch } from "react-router-dom";
 import { Form, Label, Button } from "react-bootstrap";
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
 
 export default class Playlist extends Component {
   state = {
@@ -86,70 +83,121 @@ export default class Playlist extends Component {
     );
   };
 
+  // render() {
+  //   const userPlaylist =
+  //     this.state.playlist.length &&
+  //     this.state.playlist.map(x => {
+  //       return (
+  //         <div key={x.artist + x.song}>
+  //           <div>
+  //             <b>{x.artist} </b>
+  //             {x.song}
+  //           </div>
+  //         </div>
+  //       );
+  //     });
+
+  //   return (
+  //     <>
+  //     <div>
+  //     <h4>Your playlist</h4>
+  //     {userPlaylist}
+  //     </div>
+
+  //     <form onSubmit={this.handleAddSong}>
+
+  //     <label>Song</label>
+  //     <input  className="playlist-form" type='text' name='song' placeholder='Add song' value={this.state.song} onChange={this.handleChange}/>
+
+  //     <label>Artist</label>
+  //     <input  className="playlist-form" type='text' name='artist' placeholder='Add artist' value={this.state.artist} onChange={this.handleChange}/>
+
+  //     <button type='submit' >Add Song</button>
+
+  //     </form>
+
+  //       <form onSubmit={this.handleAddSong}>
+  //         <label>Song</label>
+  //         <input
+  //           type="text"
+  //           name="song"
+  //           placeholder="Add song"
+  //           value={this.state.song}
+  //           onChange={this.handleChange}
+  //         />
+
+  //         <label>Artist</label>
+  //         <input
+  //           type="text"
+  //           name="artist"
+  //           placeholder="Add artist"
+  //           value={this.state.artist}
+  //           onChange={this.handleChange}
+  //         />
+
+  //         <button type="submit">Add Song</button>
+  //       </form>
+
+  //       <div>
+          
+
+  //         <Link to="/event">
+  //           <Button
+  //             type="button"
+  //             onClick={this.handleSubmit}
+  //             onClick={this.routeChange}
+  //           >
+  //             Arrowbtn-updatesfuneral and takes us back to Event
+  //           </Button>
+  //         </Link>
+  //       </div>
+  //     </>
+  //   );
+  // }
   render() {
     const userPlaylist =
       this.state.playlist.length &&
       this.state.playlist.map(x => {
         return (
           <div key={x.artist + x.song}>
-<<<<<<< HEAD
-            <p>
-              <b>{x.artist}</b>
-            </p>
-            <p>{x.song}</p>
-=======
-            <div>
-              <b>{x.artist} </b>
-              {x.song}
-            </div>
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
+            <b>{x.artist} </b>
+            {x.song}
           </div>
         );
       });
-
     return (
       <>
-      <div>
-      <h4>Your playlist</h4>
-      {userPlaylist}
-      </div>
-
-      <form onSubmit={this.handleAddSong}>
-
-      <label>Song</label>
-      <input  className="playlist-form" type='text' name='song' placeholder='Add song' value={this.state.song} onChange={this.handleChange}/>
-
-      <label>Artist</label>
-      <input  className="playlist-form" type='text' name='artist' placeholder='Add artist' value={this.state.artist} onChange={this.handleChange}/>
-
-      <button type='submit' >Add Song</button>
-
-      </form>
-
-        <form onSubmit={this.handleAddSong}>
-          <label>Song</label>
-          <input
-            type="text"
-            name="song"
-            placeholder="Add song"
-            value={this.state.song}
-            onChange={this.handleChange}
-          />
-
-          <label>Artist</label>
-          <input
-            type="text"
-            name="artist"
-            placeholder="Add artist"
-            value={this.state.artist}
-            onChange={this.handleChange}
-          />
-
-          <button type="submit">Add Song</button>
-        </form>
-<<<<<<< HEAD
-=======
-
+        <div>
+          <h1>My Playlist</h1>
+          <div className="playlistbox">{userPlaylist}</div>
+        </div>
+        <div className="playlist-box">
+          <form onSubmit={this.handleAddSong}>
+            <label></label>
+            <input
+              className="event-form"
+              align="center"
+              type="text"
+              name="song"
+              placeholder="Add song"
+              value={this.state.song}
+              onChange={this.handleChange}
+            />
+            <label></label>
+            <input
+              className="event-form"
+              align="center"
+              type="text"
+              name="artist"
+              placeholder="Add artist"
+              value={this.state.artist}
+              onChange={this.handleChange}
+            />
+            <button className="add-playlist-btn" type="submit">
+              <img src="../../../plus.png" alt="addicon" />
+            </button>
+          </form>
+        </div>
         <div>
           <Switch>
             <Route
@@ -163,18 +211,7 @@ export default class Playlist extends Component {
               )}
             ></Route>
           </Switch>
-
-          <Link to="/event">
-            <Button
-              type="button"
-              onClick={this.handleSubmit}
-              onClick={this.routeChange}
-            >
-              Arrowbtn-updatesfuneral and takes us back to Event
-            </Button>
-          </Link>
         </div>
->>>>>>> f42d6c1209828df1189e03b55def2762701c146c
       </>
     );
   }

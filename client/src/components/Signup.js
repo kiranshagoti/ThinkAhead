@@ -33,14 +33,15 @@ export default class Signup extends Component {
       }
     });
   };
-
   render() {
+    console.log(this.message)
     return (
       <>
+        <div className='welcome' id="signup">
         <h2>Signup</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label htmlFor="username">Username: </Form.Label>
+            <Form.Label htmlFor="username">Username: </Form.Label><br/>
             <Form.Control
               type="text"
               name="username"
@@ -50,7 +51,7 @@ export default class Signup extends Component {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label htmlFor="password">Password: </Form.Label>
+            <Form.Label htmlFor="password">Password: </Form.Label><br/>
             <Form.Control
               type="password"
               name="password"
@@ -62,8 +63,9 @@ export default class Signup extends Component {
           {this.state.message && (
             <Alert variant="danger">{this.state.message}</Alert>
           )}
-          <Button type="submit">Signup</Button>
+          <Button className="signup-btn" type="submit">Signup</Button>
         </Form>
+        </div>
       </>
     );
   }
