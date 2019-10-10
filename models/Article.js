@@ -3,7 +3,8 @@ const Schema   = mongoose.Schema;
 
 const articleSchema = new Schema({
   title: String,
-  content:String
+  content: String,
+  imageUrl: String
 });
 
 const Article = mongoose.model('Article', articleSchema);
