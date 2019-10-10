@@ -6,45 +6,53 @@ import Messages from "./Messages";
 
 export class Letters extends Component {
   state = {
-    letters: "",
+    letter: "",
     letterTo: "",
-    user:this.props.user,
-    letters:[]
+    user: this.props.user,
+    letters: []
   };
-
-
 
   componentDidMount = () => {
     console.log(this.props);
-  };
-
-
-
-  updateFuneral = toUpdate => {
     axios
       .get(`/funeral/${this.state.user.funeral}`)
       .then(response => {
         const { letters } = response.data;
-
-        this.setState(
-          {
-            letters
-          },
-          () => console.log("letters updated:", this.state)
-        );
+        this.setState({
+          letters: letters
+        });
       })
       .catch(err => console.log(err));
   };
 
-  
+  handleAddLetters = event => {
+    event.preventDefault();
+    const { letter, letterTo } = this.state;
+    const letters = { letter, letterTo };
+    this.setState(
+      {
+        letter: "",
+        letterTo: "",
+        letters: this.state.letters.concat(letters)
+      },
+      () => {
+        const { letters } = this.state;
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+            letters
+          })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
+    );
+  };
 
   handleChange = event => {
+    const { name, value } = event.target;
     this.setState({
-      [event.target.name]: event.target.value
-    },() => {
-      const { letters, letterTo } = this.state;
-
-    this.updateFuneral({ letters: letters, letterTo: letterTo });
+      [name]: value
     });
   };
 
@@ -56,10 +64,9 @@ export class Letters extends Component {
           <div key={x.letter + x.letterTo}>
             <Link to="/messages/letters/letterscollection">
               <Button type="button" onClick={this.routeChange}>
-                <b>{x.letterTo}s letter</b>
+                <b>{x.letterTo}'s letter</b>
               </Button>
             </Link>
-            {/* <div>{x.letter}</div> */}
           </div>
         );
       });
@@ -77,15 +84,17 @@ export class Letters extends Component {
             <Form.Control
               type="text"
               name="letter"
-              // onChange={this.handleChange}
+              onChange={this.handleChange}
               placeholder="Write a letter here"
+              value={this.state.letter}
             />
             <Form.Label> To: </Form.Label>
             <Form.Control
               type="text"
               name="letterTo"
-              // onChange={this.handleChange}
+              onChange={this.handleChange}
               placeholder="Letter to"
+              value={this.state.letterTo}
             />
           </Form.Group>
 
@@ -103,16 +112,6 @@ export class Letters extends Component {
                 )}
               ></Route>
             </Switch>
-
-            <Link to="/messages">
-              <Button
-                type="button"
-                onClick={this.handleSubmit}
-                onClick={this.routeChange}
-              >
-                Arrowbtn-updatesfuneral and takes us back to Messages
-              </Button>
-            </Link>
           </div>
         </Form>
       </>

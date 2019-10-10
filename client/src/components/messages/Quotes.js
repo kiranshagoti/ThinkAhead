@@ -20,7 +20,7 @@ export class Quotes extends Component {
           {
             quotes
           },
-          () => console.log("Quotes in funeral:", this.state)
+          () => console.log("Quotes in funeral:", this.state.quotes)
         );
       })
       .catch(err => console.log(err));
@@ -28,15 +28,25 @@ export class Quotes extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { quote, quoteBy } = this.state;
+    const quoteObject = { quote, quoteBy };
+    this.setState(
+      {
+        quote: "",
+        quoteBy: "",
+        quotes: this.quotes.concat(quoteObject)
+      },
+      () => {
+        const { quotes } = this.state;
 
-    const { quotes } = this.state;
-
-    axios
-      .post(`/funeral/updatefuneral/${this.state.user.funeral}`, { quotes })
-      .then(response => {
-        console.log("NEW DATA:", response.data);
-      })
-      .catch(err => console.log(err));
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, { quotes })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
+    );
   };
 
   handleChange = e => {
