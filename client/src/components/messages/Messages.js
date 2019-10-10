@@ -54,39 +54,6 @@ export class Messages extends Component {
           <button> document icon </button>
           <div>Documents</div>
         </Link>
-        <Route
-          exact
-          path="/messages/letters"
-          render={props => (
-            <Letters
-              user={this.state.user}
-              updateFuneral={this.updateFuneral}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/messages/quotes"
-          render={props => (
-            <Quotes
-              user={this.state.user}
-              updateFuneral={this.updateFuneral}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/messages/documents"
-          render={props => (
-            <Documents
-              user={this.state.user}
-              updateFuneral={this.updateFuneral}
-              {...props}
-            />
-          )}
-        />
       </div>
     );
   }

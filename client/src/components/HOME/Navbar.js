@@ -20,29 +20,32 @@ export default class Navbar extends Component {
 
     render() {
         const displayed = {
-            width: '300px',
-            height: '400px',
+            // width: '300px',
+            // height: '400px',
+            backgroundColor:'white',
             left: '0',
             transitionDuration: '0.5s'
         }
         const hide = {
-            width: '300px',
-            height: '400px',
+            // width: '300px',
+            // height: '400px',
             marginLeft: '-400px',
             transitionDuration: '0.5s'
         }
         return (
-            <div>
-                {this.state.showMenu ? <button onClick={this.showMenu}>HIDE</button> : <button onClick={this.showMenu}>SHOW</button>}
+            <div className='homeNavbar' style={{position:'absolute'}}>
+                {!this.state.showMenu &&  <button onClick={this.showMenu}>SHOW</button>}
             <div style={this.state.showMenu ? displayed : hide}>
-              <nav className="nav-style">
-                    <ul>
+                    <button onClick={this.showMenu}>HIDE</button>
+                    <nav className="nav-style">
+                        <ul>
+                        <li><Link to ="/">HOME</Link></li>
                         <li><Link to ="/profile">PROFILE</Link></li>
                         <li><Link to ="/about">ABOUT</Link></li>
                         <li><Link to ="/explore">EXPLORE</Link></li>
                         <li><Link to ="/share-funeral-plans">SHARE FUNERAL PLANS</Link></li>
                         <li><Link to ="/legal">LEGAL</Link></li>
-                        <li><Link to ="/invite-friends">INVITE FRIENDS</Link></li>
+                        
                         <li><Link to ="/settings">SETTINGS</Link></li>
                         <button onClick={(props) => this.handleLogout(props)}>LOGOUT</button>
                 </ul>
