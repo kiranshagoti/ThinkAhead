@@ -1,13 +1,15 @@
-body{
-  width:100vw  
+* {
+  background-color: #eaeaea;
+}
+body {
+  width: 100vw;
 }
 
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
-  flex:1
-  
+  flex: 1;
 }
 
 .App-logo {
@@ -25,16 +27,15 @@ body{
   color: white;
 }
 
-
 .App-link {
   color: #09d3ac;
 }
 
-.nav-style{
+.nav-style {
   padding: 40px;
   border-radius: 5px;
 }
-.welcomeMessage{
+.welcomeMessage {
   padding: 20px;
   text-align: justify;
 }
@@ -42,22 +43,22 @@ body{
   text-align: center;
 }
 
-.homeSection{
+.homeSection {
   margin: 10px 0;
 }
-.homeSection-btn{
+.homeSection-btn {
   display: inline-block;
   margin: 10px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
 }
-.homeArticle{
+.homeArticle {
   padding: 30px;
   text-align: left;
 }
-.bottom-nav{
-  width:100vw;
+.bottom-nav {
+  width: 100vw;
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -65,7 +66,6 @@ body{
 
   align-items: center;
 }
-
 
 .nav-style {
   text-align: left;
@@ -76,6 +76,19 @@ body{
   margin: 0 10px;
   text-decoration: none;
 }
+/* Sagas styling  */
 
-
-
+/* Event homepage  */
+.event-box {
+  color: white;
+}
+.playlist-form {
+  border: none;
+  padding: 0 10px;
+  margin: 0;
+  width: 240px;
+  background: none;
+  display: block;
+  text-align: center;
+  background-color: white;
+}

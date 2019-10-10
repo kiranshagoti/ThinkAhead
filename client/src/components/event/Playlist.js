@@ -108,10 +108,10 @@ export default class Playlist extends Component {
       <form onSubmit={this.handleAddSong}>
 
       <label>Song</label>
-      <input type='text' name='song' placeholder='Add song' value={this.state.song} onChange={this.handleChange}/>
+      <input  className="playlist-form" type='text' name='song' placeholder='Add song' value={this.state.song} onChange={this.handleChange}/>
 
       <label>Artist</label>
-      <input type='text' name='artist' placeholder='Add artist' value={this.state.artist} onChange={this.handleChange}/>
+      <input  className="playlist-form" type='text' name='artist' placeholder='Add artist' value={this.state.artist} onChange={this.handleChange}/>
 
       <button type='submit' >Add Song</button>
 

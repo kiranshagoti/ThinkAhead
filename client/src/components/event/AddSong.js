@@ -8,7 +8,7 @@ export default class AddSong extends Component {
         <Form onSubmit={this.handelSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
-            <Form.Control
+            <Form.Control className="playlist-form"
               type="text"
               name="Title"
               value={this.state.musicTitle}
@@ -18,7 +18,7 @@ export default class AddSong extends Component {
           </Form.Group>
           <Form.Group>
             <Form.Label>Artist</Form.Label>
-            <Form.Control
+            <Form.Control className="playlist-form"
               type="text"
               name="Artist"
               value={this.state.musicArtist}
