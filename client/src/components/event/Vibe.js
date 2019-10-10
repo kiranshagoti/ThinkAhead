@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Form, Label, Button } from "react-bootstrap";
+import { Link, Route, Switch } from "react-router-dom";
+import Event from "./Event";
 
 export default class Vibe extends Component {
   state = {
@@ -27,6 +29,22 @@ export default class Vibe extends Component {
           },
           () => console.log("FUNERAL IN VIBE STATE:", this.state)
         );
+      })
+      .catch(err => console.log(err));
+  };
+
+  // UPDATE FUNERAL ---> POST IN FUNERAL/UPDATEFUNERAL/:ID
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const { food, dressCode, kindOfVibe, flowers } = this.state;
+
+    axios
+      .post(`/funeral/updatefuneral/${this.state.user.funeral}`, {
+        food,
+        dressCode,
+        kindOfVibe,
+        flowers
       })
       .catch(err => console.log(err));
   };
@@ -101,6 +119,30 @@ export default class Vibe extends Component {
             />
           </Form.Group>
         </Form>
+        <div>
+          <Switch>
+            <Route
+              exact
+              path="/event"
+              render={() => (
+                <Event
+                  user={this.state.user}
+                  funeralId={this.state.user.funeral}
+                />
+              )}
+            ></Route>
+          </Switch>
+
+          <Link to="/event">
+            <Button
+              type="button"
+              onClick={this.handleSubmit}
+              onClick={this.routeChange}
+            >
+              Arrowbtn-updatesfuneral and takes us back to Event
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

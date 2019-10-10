@@ -17,7 +17,7 @@ export default class Event extends Component {
         <div>
           Would you like to ask people to speak?
           <Link to="/performance">
-            <button> type="button">Arrow-btn</button>
+            <button type="button">Arrow-btn</button>
           </Link>
         </div>
 

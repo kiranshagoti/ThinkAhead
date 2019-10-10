@@ -34,19 +34,25 @@ export default function BottomNavbar() {
     //   <Link to='/messages'>
     //   <BottomNavigationAction label="Message" value="message" icon={<MessageIcon />} /></Link>
     // </BottomNavigation>
-    <div className="bottom-nav">
-      <div className="homeSection-btn">
-        <Link to="/">HOME</Link>
+    <>
+      <div className="bar">
+  
+        </div>
+    <div className='bottom-nav'>
+      <div className='homeSection-btn'>
+        <Link to="/"><img src='../../../home-symbol@2x.png' alt="homeicon" /></Link>
       </div>
-      <div className="homeSection-btn">
-        <Link to="/body">BODY</Link>
+      <div className='homeSection-btn'>
+        <Link to="/body"><img src='../../../body-symbol@2x.png' alt="bodyicon" /></Link>
       </div>
-      <div className="homeSection-btn">
-        <Link to="/event">EVENT</Link>
+      <div className='homeSection-btn'>
+        <Link to="/event"><img src='../../../party-symbol@2x.png' alt="eventicon" /></Link>
       </div>
-      <div className="homeSection-btn">
-        <Link to="/messages">MESS</Link>
+      <div className='homeSection-btn'>
+        <Link to="/messages"><img src='../../../document-symbol@2x.png' alt="messagesicon" /></Link>
       </div>
-    </div>
+
+      </div>
+      </>
   );
 }
