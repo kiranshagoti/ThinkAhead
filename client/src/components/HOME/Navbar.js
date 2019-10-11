@@ -37,27 +37,30 @@ export default class Navbar extends Component {
             marginLeft: '-450px',
             transitionDuration: '0.5s'
         }
-
         return (
-            <div className='homeNavbar' style={{position:'fixed'}}>
-                {!this.state.showMenu &&  <button className='homeNavbar-btn' onClick={this.showMenu}>SHOW</button>}
-                <h2 className='homeLogo'>THINK AHEAD</h2>
-                <div style={this.state.showMenu ? displayed : hide}>
-                    <button onClick={this.showMenu}>HIDE</button>
-                    <nav className="nav-style">
-                        <ul onClick={() => {this.toogleHide()}}>
-                            <li><Link to ="/">HOME</Link></li>
-                            <li><Link to ="/profile">PROFILE</Link></li>
-                            <li><Link to ="/about">ABOUT</Link></li>
-                            <li><Link to ="/explore">EXPLORE</Link></li>
-                            <li><Link to ="/share-funeral-plans">SHARE FUNERAL PLANS</Link></li>
-                            <li><Link to ="/legal">LEGAL</Link></li>
-                            <li><Link to ="/settings">SETTINGS</Link></li>
-                            <button onClick={(props) => this.handleLogout(props)}>LOGOUT</button>
-                        </ul>
-                    </nav>
+            <>
+            
+                {this.props.user && this.props.user.funeral && <div className='homeNavbar' style={{ position: 'fixed' }}>
+                    {!this.state.showMenu && <button className='homeNavbar-btn' onClick={this.showMenu}>SHOW</button>}
+                    <h2 className='homeLogo'>THINK AHEAD</h2>
+                    <div style={this.state.showMenu ? displayed : hide}>
+                        <button onClick={this.showMenu}>HIDE</button>
+                        <nav className="nav-style">
+                            <ul onClick={() => { this.toogleHide() }}>
+                                <li><Link to="/">HOME</Link></li>
+                                <li><Link to="/profile">PROFILE</Link></li>
+                                <li><Link to="/about">ABOUT</Link></li>
+                                <li><Link to="/explore">EXPLORE</Link></li>
+                                <li><Link to="/share-funeral-plans">SHARE FUNERAL PLANS</Link></li>
+                                <li><Link to="/legal">LEGAL</Link></li>
+                                <li><Link to="/settings">SETTINGS</Link></li>
+                                <button onClick={(props) => this.handleLogout(props)}>LOGOUT</button>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-            </div>
+                }
+            </>
         )
     }
 }

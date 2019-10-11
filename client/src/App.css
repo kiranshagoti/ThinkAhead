@@ -6,13 +6,13 @@ h1, h2, h3, h4 {
   font-weight: 400;
 }
 body {
+  background-color: #eaeaea;
   width: 100vw;
   background-color: #eaeaea;
 }
 
 .App {
-  padding: 20px;
-  /* text-align: center; */
+  text-align: left;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -171,7 +171,10 @@ body {
 .nav-style a {
   text-decoration: none;
 }
+
 .mainContainer{
+  padding: 20px;
+
   margin-top: 100px;
   margin-bottom: 80px;
 }
@@ -331,6 +334,7 @@ body {
   color: #353535;
   
 } */
+
 .displayQuote div {
   border: 1px solid black;
 }
@@ -342,39 +346,9 @@ body {
   flex-direction: column;
   box-shadow: 2px gray;
 }
-.welcome {
-  top:0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("/background.png");
-  background-size: cover; 
-  color:  #ffffff; 
-  display: flex;
-  flex-direction: column;
-  
-}
-.welcome h1 {
-  margin: 0;
-  /* width: 133.5px;
-  height: 36.5px; */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
-  font-weight: 200;
-  font-size: 4em;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 7.5px;
-  color: #ffffff;
-}
+
 ​
-#welcomePage{
-  display: flex; 
-  justify-content: center; 
-  align-content: center; 
-  align-items: center;
-  align-self: column; 
-}
+
 ​
 .rectangle
 {
@@ -410,7 +384,7 @@ body {
   color: #ffffff;
 }
 ​
-.welcome-links {
+.welcome-links  {
   margin-top: 100px;
   display: flex; 
   flex-direction: column; 
@@ -428,13 +402,15 @@ body {
 }
 ​
 #signup {
-  font-size: 2em; 
   display: flex; 
   justify-content: center; 
   align-content: center; 
   align-items: center;
   align-self: column; 
+
 }
+
+
 #signup input {
   padding: 5px;
   text-align: center;
@@ -446,6 +422,17 @@ body {
 
 }
 ​
+#login input {
+  padding: 5px;
+  text-align: center;
+  font-size: 0.7em;
+  margin: 5px;
+  border-radius: 5px;
+  border:none;
+  height: 40px;
+
+}
+
 .signup-btn {
   color:#282c34 ;
   background-color: none; 
@@ -460,10 +447,63 @@ body {
   margin-top: 30px;
   
 }
-#login {
+
+.login-btn {
+  color:#282c34 ;
+  background-color: none; 
+  border: none;
+  
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 30px;
+  
+}
+
+#welcomePage {
   display: flex; 
+  flex-direction: column;
   justify-content: center; 
   align-content: center; 
   align-items: center;
-  align-self: column; 
+  align-self: column;
+  height: 100vh;
+}
+
+.welcome {
+  top:0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/background.png");
+  background-size: cover; 
+  color:  #ffffff; 
+  display: flex;
+  flex-direction: column;
+  margin: -120px -20px;
+  text-align: center;
+}
+.welcome h1 {
+  margin: 0;
+  /* width: 133.5px;
+  height: 36.5px; */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+  font-weight: 200;
+  font-size: 4em;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 7.5px;
+  color: #ffffff;
+}
+
+.welcome-btn {
+  margin: 20px;
+}
+
+.Rectangleinmess img {
+  margin: 5px;
 }

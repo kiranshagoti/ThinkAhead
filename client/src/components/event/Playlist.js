@@ -156,7 +156,7 @@ export default class Playlist extends Component {
   // }
   render() {
     const userPlaylist =
-      this.state.playlist.length &&
+      this.state.playlist.length >0 &&
       this.state.playlist.map(x => {
         return (
           <div key={x.artist + x.song}>

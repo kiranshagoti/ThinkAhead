@@ -18,6 +18,7 @@ const questions = [
   } 
 ];
 class FormUserComponent extends Component {
+
   state = {
     step: 0,
     thoughtAboutFuneral: false,
@@ -26,6 +27,7 @@ class FormUserComponent extends Component {
     showPopUp: false,
     popUpContent: ""
   };
+
   popUp = q => {
     let content = "";
     if (q === "thoughtAboutFuneral") {
@@ -59,6 +61,7 @@ class FormUserComponent extends Component {
       () => console.log(this.state)
     );
   };
+
   answerQuestion = (q, a) => {
     // if (a === "no" || a === "I don't know") {
     //   this.popUp(q);
@@ -80,10 +83,11 @@ class FormUserComponent extends Component {
     axios
       .post("/funeral/new", { howToBeBuried, kindOfVibe })
       .then(response => {
-        console.log(response.data);
+
+        this.props.setUser(response.data)
+        this.props.history.push("/");
       })
       .catch(err => console.log(err));
-    this.props.history.push("/");
   };
   render() {
     const questionsMap = questions.map((x, i) => {

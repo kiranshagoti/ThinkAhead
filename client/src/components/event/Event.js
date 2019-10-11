@@ -86,7 +86,6 @@ export default class Event extends Component {
             </p>
           </div>
         </Link>
-​
         <Link to="/event/memories/">
           <div className="Rectangleinmess">
             <img src="../../../memories.png" alt="memoriesicon" />

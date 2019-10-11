@@ -52,12 +52,12 @@ class App extends React.Component {
 
     return (
       <>
-        <div className="App">
-          {this.state.user && <Navbar user={this.state.user} setUser={this.setUser} />}
+        <div className="App">   
+          <Navbar user={this.state.user} setUser={this.setUser} />
           <div className="mainContainer">
             <Switch>
               <Route exact path="/hello" component={Welcome}/>
-              <Route exact path="/welcome" component={FormUserComponent} />
+              <Route exact path="/welcome" render={(props) => <FormUserComponent setUser={this.setUser} {...props} />} />
               <Route
                 exact
                 path="/signup"
@@ -189,7 +189,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
-        {this.state.user && <BottomNavbar/>}
+        {this.state.user && <BottomNavbar user={this.state.user}/>}
         
       </>
     );

@@ -13,6 +13,7 @@ export default class Welcome extends Component {
         
         <div className="welcome-links">
           <Link className='welcome-btn' to="/signup">Signup</Link>
+          <br></br>
           <Link className='welcome-btn' to="/login">Login</Link>
         </div>
       
