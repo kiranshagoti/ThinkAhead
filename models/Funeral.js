@@ -46,6 +46,8 @@ const funeralSchema = new Schema({
   documents: Object, //upload important files
   videoPath: String,
 
+  lovedOne: Schema.Types.Mixed,
+
   contactName: String,
   emailContact: String,
   phonenumberContact: String,

@@ -1,6 +1,7 @@
 const data = [
   {
     title: "Funeral Pre-Planning Cheat Sheet",
+    imageUrl: "https://images.unsplash.com/photo-1544813545-4827b64fcacb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
     content: `This article on funeral planning is provided by ThinkAhead — The web's leading resource for planning and organizing your life. Create, store and share important documents that your loved ones might need.Plan now, rest later.
     These five tips are for those who are interested in pre-planning their own funeral, either for your own peace of mind or to take the burden off of your family and loved ones.
     1. Your Big Decision: Burial or Cremation?
@@ -16,6 +17,7 @@ const data = [
   },
   {
     title: 'How To Pre-Plan Your Funeral',
+    imageUrl: "https://images.unsplash.com/photo-1555629722-fd1f6c00d22b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     content: `Imagine and pre-plan your "dream funeral," even if it's 50 years away, and tell your family what you want.
 
     Pre-planning your funeral arrangements can take some of the logistical and financial stresses off of your family after your death, and ensure that you get the kind of funeral you want. That said, don’t feel pressured to plan it down to the last detail. While some have no problem planning their own funeral, it’s understandable if you find it too difficult or overwhelming. However, you can still let your family know a few aspects to make it much smoother for everyone involved.
@@ -82,6 +84,7 @@ const data = [
   },
   {
     title: '10 Things To Do After A Death',
+    imageUrl: "https://images.unsplash.com/photo-1516880354211-e5cc9b90d1ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
     content: `It’s a difficult time, emotions are raw and there’s a lot to organize.
 
     1. Report the Death
@@ -186,6 +189,7 @@ const data = [
 },
 {
   title: 'Preparation You Should Do Before Pre-Planning Your Funeral Arrangements',
+  imageUrl: "https://images.unsplash.com/photo-1556569896-9781a7004b9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
   content: `By figuring out the basics of what you want for your funeral or memorial service, you can more easily compare funeral homes and directors, go into your first meeting with a funeral director armed with information about your choices, and be empowered to make the best decisions.
 
   Whether you decide to pay in advance for some or all of your funeral, or if you make arrangements without purchasing anything, there are some important decisions you should consider before beginning the planning process. Below are many questions to consider. While you don’t have to answer all of these questions before you meet with a funeral director, having a sense of what you want can certainly help.
@@ -221,6 +225,7 @@ const data = [
 },
 {
   title: 'Who Has The Right To Make Funeral Decisions?',
+  imageUrl: "https://images.unsplash.com/photo-1553923063-99176de11c53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
   content: `In some situations the party responsible for making decisions about the funeral can be unclear and even contested.
 
   A funeral requires a lot of important decisions, some of which are...
@@ -273,6 +278,7 @@ const data = [
 },
 {
   title: "How To Choose A Green Funeral Home",
+  imageUrl:"https://images.unsplash.com/photo-1545889401-84d5828db37b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
   content:`Green funeral homes make environmentally friendly goods available to their customers, offer non-toxic body preparation options, and work with green cemeteries or natural burial grounds.
 
   What Makes A Funeral Home "Green"?

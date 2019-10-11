@@ -30,6 +30,7 @@ export class Quotes extends Component {
     event.preventDefault();
     const { quote, quoteBy } = this.state;
     const quoteObject = { quote, quoteBy };
+    
     this.setState(
       {
         quote: "",
@@ -68,27 +69,88 @@ export class Quotes extends Component {
         quoteBy: "",
         quotes: this.state.quotes.concat({ quote: quote, quoteBy: quoteBy })
       },
-      () => console.log("CHANGES IN STATE:", this.state)
+      () => {
+        const { quotes } = this.state;
+
+        axios
+          .post(`/funeral/updatefuneral/${this.state.user.funeral}`, { quotes })
+          .then(response => {
+            console.log("NEW DATA:", response.data);
+          })
+          .catch(err => console.log(err));
+      }
     );
   };
 
+  // render() {
+  //   const userQuote =
+  //     this.state.quotes.length &&
+  //     this.state.quotes.map(x => {
+  //       return (
+  //         <div key={x.quote + x.quoteBy}>
+  //           <div>
+  //             <p>{x.quote}</p>
+  //             <b>{x.quoteBy}</b>
+  //           </div>
+  //         </div>
+  //       );
+  //     });
+  //   return (
+  //     <div>
+  //       <Form onSubmit={this.handleAddQuote}>
+  //         <Form.Control
+  //           type="text"
+  //           name="quote"
+  //           placeholder="Add quote"
+  //           onChange={this.handleChange}
+  //           value={this.state.quote}
+  //         />
+  //         <Form.Control
+  //           type="text"
+  //           name="quoteBy"
+  //           placeholder="Quote by"
+  //           onChange={this.handleChange}
+  //           value={this.state.quoteBy}
+  //         />
+  //         <Button type="submit">Add quote</Button>
+  //       </Form>
+  //       <Link to="/messages">
+  //         <Button
+  //           type="button"
+  //           onClick={this.handleSubmit}
+  //           onClick={this.routeChange}
+  //         >
+  //           Arrowbtn-updatesfuneral and takes us back to Event
+  //         </Button>
+  //       </Link>
+  //       <div>
+  //         <h4>Quotes</h4>
+  //         {userQuote}
+  //       </div>
+  //     </div>
+  //   );
+  // }
   render() {
     const userQuote =
       this.state.quotes.length &&
       this.state.quotes.map(x => {
         return (
           <div key={x.quote + x.quoteBy}>
-            <div>
-              <p>{x.quote}</p>
-              <b>{x.quoteBy}</b>
-            </div>
+              {x.quote}  {x.quoteBy}  
           </div>
         );
       });
     return (
       <div>
+        <div>
+          <h4>Quotes</h4>
+        </div>
+        <div className="displayQuote">{userQuote}</div>
+        <div className="letter-input-position">
         <Form onSubmit={this.handleAddQuote}>
+        <Form.Group>
           <Form.Control
+            className="letter-input"
             type="text"
             name="quote"
             placeholder="Add quote"
@@ -96,26 +158,16 @@ export class Quotes extends Component {
             value={this.state.quote}
           />
           <Form.Control
+            className="letterTo"
             type="text"
             name="quoteBy"
             placeholder="Quote by"
             onChange={this.handleChange}
             value={this.state.quoteBy}
           />
-          <Button type="submit">Add quote</Button>
+          </Form.Group>
+          <Button type="submit">SAVE</Button>
         </Form>
-        <Link to="/messages">
-          <Button
-            type="button"
-            onClick={this.handleSubmit}
-            onClick={this.routeChange}
-          >
-            Arrowbtn-updatesfuneral and takes us back to Event
-          </Button>
-        </Link>
-        <div>
-          <h4>Quotes</h4>
-          {userQuote}
         </div>
       </div>
     );

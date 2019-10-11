@@ -13,22 +13,56 @@ export default class Body extends Component {
     this.state.funeral &&
       console.log("FUNERAL FROM BODY COMP.", this.state.funeral);
     return (
-      <div>
+      <>
+        <div className="bodysection">
+          <p>Funeral planning helps your loved ones make fewer guesses about what you want and how best to honor the life you’ve lived.
+
+</p>
+          <div className='bodySection-btn-row'>
+            <div className='bodySection-btn'>
+           
         <Link to="/body/handlebody">
-          <div>Handle Body</div>
-        </Link>
+         <img src="../../../dummy.png" alt="handlingicon"/>
+              </Link>
+              Handling
+              </div>
 
+        <div className='bodySection-btn'>
         <Link to="/body/location">
-          <div>Location</div>
-        </Link>
+        <img src="../../../location1.png" alt="locationicon"/>
+              </Link>
+              Location
+            </div>
 
-        <div>
-          <h2>Plan More...</h2>
-          <button>Religion icon</button>
-          <button>Coffin icon </button>
-          <button>Science icon</button>
+            <div className='bodySection-btn'>
+        <Link to="/body/invite">
+        <img src="../../../dress.png" alt="dressicon"/>
+              </Link>
+              Invite
+            </div>
+            </div>
         </div>
-      </div>
+
+        <div className='bodySection'>
+      <h3>More...</h3>
+      
+      
+        <div className='bodySection-btn-row'>
+        <div className='bodySection-btn'>
+              <Link to="/religion"><img src='../../../religion.png' alt="religionicon" /></Link>
+              Religion
+        </div>
+        <div className='bodySection-btn'>
+              <Link to="/coffin"><img src='../../../coffin.png' alt="coffinicon" /></Link>
+              Coffin
+          </div>
+          <div className='bodySection-btn'>
+              <Link to="/science"><img src='../../../science.png' alt="scienceicon" /></Link>
+              Science
+          </div>
+        </div>
+        </div>
+        </>
     );
   }
 }

@@ -14,63 +14,31 @@ export class Messages extends Component {
   render() {
     return (
       <div className="messages-container">
+
         <div>
-          {" "}
-          Write letters to your loved ones and share your favorite quotes
-        </div>
-
-        <Switch>
-          <Route
-            exact
-            path="/messages/letters"
-            render={props => (
-              <Letters
-                user={this.state.user}
-                updateFuneral={this.updateFuneral}
-                {...props}
-              />
-            )}
-          />
-
-          <Route
-            exact
-            path="/messages/quotes"
-            render={props => (
-              <Quotes
-                user={this.state.user}
-                updateFuneral={this.updateFuneral}
-                {...props}
-              />
-            )}
-          />
-
-          <Route
-            exact
-            path="/messages/documents"
-            render={props => (
-              <Documents
-                user={this.state.user}
-                updateFuneral={this.updateFuneral}
-                {...props}
-              />
-            )}
-          />
-        </Switch>
-
-        <Link to="/messages/letters">
-          <button>letter icon</button>
-          <div>Letters</div>
-        </Link>
-
-        <Link to="/messages/quotes">
-          <button> "" </button>
-          <div>Quotes</div>
-        </Link>
-
         <Link to="/messages/documents">
-          <button> document icon </button>
-          <div>Documents</div>
+          <div className="Rectangleinmess">
+            <img src="../../../document.png" alt="documenticon" />
+
+            <p className="paragrafpadding">Upload importent documents</p>
+          </div>
         </Link>
+        ​
+        <Link to="/messages/quotes">
+          <div className="Rectangleinmess">
+            <img src="../../../quote.png" alt="quotesicon" />
+
+            <p className="paragrafpadding">Share your favorite quotes</p>
+          </div>
+        </Link>
+        ​
+        <Link to="/messages/letters">
+          <div className="Rectangleinmess">
+            <img src="../../../Messages.png" alt="messagesicon" />
+            <p className="paragrafpadding">Write letters to your loved ones</p>
+          </div>
+        </Link>
+        </div>
       </div>
     );
   }

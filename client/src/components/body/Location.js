@@ -47,10 +47,14 @@ class Location extends Component {
     );
   };
 
+  handleSubmit = e => {
+    e.preventDefault()
+  }
+
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             <h3>Final Rest</h3>
           </label>
@@ -66,4 +70,5 @@ class Location extends Component {
     );
   }
 }
+
 export default Location;

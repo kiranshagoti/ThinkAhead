@@ -18,15 +18,14 @@ export default class AddContact extends Component {
 
     axios.get(`/funeral/${this.props.user.funeral}`).then(response => {
       console.log(response.data)
-      const {contactName, emailContact, phonenumberContact
-        , messageContact} = response.data
+      
+      const { lovedOne } = response.data
       
       this.setState({
-        contactName,
-        emailContact,
-        phonenumberContact,
-        messageContact,
-        user: this.props.user
+        contactName: lovedOne.contactName,
+        emailContact: lovedOne.emailContact,
+        phonenumberContact: lovedOne.phonenumberContact,
+        messageContact: lovedOne.messageContact,
 
       },() => console.log('Add Contact:',this.state))
 

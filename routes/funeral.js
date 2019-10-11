@@ -86,7 +86,7 @@ router.post("/new", (req, res, next) => {
         { new: true }
       )
         .then(user => {
-          console.log(user);
+          res.json(user)
         })
         .catch(err => console.log(err));
     })

@@ -19,8 +19,10 @@ export default class Articles extends Component {
       this.state.listOfArticles &&
       this.state.listOfArticles.map(x => {
         return (
+          <div className='homeSection-btn-row'>
           <div className="homeArticle" key={x._id}>
-            <h3>{x.title}</h3>
+              <h3>{x.title}</h3>
+              <img src={x.imageUrl}/>
             {x.content.length > 200 ? (
               <p>
                 {[...x.content].splice(0, 200).join("")}
@@ -31,7 +33,8 @@ export default class Articles extends Component {
             ) : (
               <p>{x.content}</p>
             )}
-          </div>
+            </div>
+            </div>
         );
       });
 

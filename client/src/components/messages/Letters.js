@@ -4,7 +4,7 @@ import { Form, Label, Button } from "react-bootstrap";
 import axios from "axios";
 import Messages from "./Messages";
 
-export class Letters extends Component {
+export default class Letters extends Component {
   state = {
     letter: "",
     letterTo: "",
@@ -56,67 +56,71 @@ export class Letters extends Component {
     });
   };
 
+  
+
+    
+          
+
   render() {
     const userLetters =
       this.state.letters.length &&
       this.state.letters.map(x => {
         return (
+      
           <div key={x.letter + x.letterTo}>
             <Link to="/messages/letters/letterscollection">
               <Button type="button" onClick={this.routeChange}>
-                <b>{x.letterTo}'s letter</b>
+                <b className="letter">{x.letterTo}'s letter</b>
               </Button>
             </Link>
           </div>
         );
       });
-
     return (
       <>
         <div>
           <h4>Your Letters</h4>
-          {userLetters}
         </div>
-
-        <Form onSubmit={this.handleAddLetters}>
-          <Form.Group>
-            <Form.Label> Write a letter </Form.Label>
-            <Form.Control
-              type="text"
-              name="letter"
-              onChange={this.handleChange}
-              placeholder="Write a letter here"
-              value={this.state.letter}
-            />
-            <Form.Label> To: </Form.Label>
-            <Form.Control
-              type="text"
-              name="letterTo"
-              onChange={this.handleChange}
-              placeholder="Letter to"
-              value={this.state.letterTo}
-            />
-          </Form.Group>
-
-          <Button type="submit">Add Letter</Button>
-          <div>
-            <Switch>
-              <Route
-                exact
-                path="/messages"
-                render={() => (
-                  <Messages
-                    user={this.state.user}
-                    funeralId={this.state.user.funeral}
-                  />
-                )}
-              ></Route>
-            </Switch>
-          </div>
-        </Form>
+        <div className="userLetters"> {userLetters} </div>
+        <div className="letter-input-position">
+          <Form onSubmit={this.handleAddLetters}>
+            <Form.Group>
+              <Form.Control
+                className="letter-input"
+                type="text"
+                name="letter"
+                onChange={this.handleChange}
+                placeholder="Write a letter here"
+                value={this.state.letter}
+              />
+              <Form.Control
+                className="letterTo"
+                type="text"
+                name="letterTo"
+                onChange={this.handleChange}
+                placeholder="Letter to"
+                value={this.state.letterTo}
+              />
+            </Form.Group>
+            <Button type="submit">SAVE</Button>
+          </Form>
+        </div>
+        <div>
+          <Switch>
+            <Route
+              exact
+              path="/messages"
+              render={() => (
+                <Messages
+                  user={this.state.user}
+                  funeralId={this.state.user.funeral}
+                />
+              )}
+            ></Route>
+          </Switch>
+        </div>
       </>
     );
   }
 }
 
-export default Letters;

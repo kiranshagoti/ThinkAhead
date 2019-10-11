@@ -14,13 +14,7 @@ export default class Home extends Component {
         <div className="welcomeMessage">
           <h2>Welcome {this.state.user.username}</h2>
           <p>
-            I'm sure that every person alive at some point has thought about
-            their own funeral. Mabye you have ideas concerning what music to
-            play, the people who should attend or what images to display. The
-            question is, how should the people you hold dear know about your
-            final wishes when you´re gone? With Think Ahead all this important
-            information is safely stored in one place and can be shared with
-            someone you trust.
+            "Plan for the difficult while it is easy, do what is great while it is small."
           </p>
         </div>
         <MainPlan />

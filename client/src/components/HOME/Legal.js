@@ -2,18 +2,19 @@ import React from 'react'
 
 const Legal = () => {
   return (
-    <div>
+    <div className='legalContainer'>
       <h1>Terms & Conditions</h1>
 
-
-THINK AHEAD TERMS OF SERVICE
-
-Welcome to ThinkAhead!  These Terms of Service (together with ThinkAhead Privacy Policy https://www.thinkahead.com/privacy-policy and Copyright Policy https://www.thinkahead.com, the “Terms”) govern your access and use of www.thinkahead.com (the “Site”), and all products, services, mobile websites, and native mobile applications (collectively and together with the Site, the “Services”) that are owned and operated by Beyondly, Inc. ("ThinkAhead",” “we,” “us,” or “our”). 
-
+<p>
+THINK AHEAD TERMS OF SERVICE <br/>
+<br/>
+Welcome to ThinkAhead!  These Terms of Service (together with ThinkAhead Privacy Policy https://www.thinkahead.com/privacy-policy and Copyright Policy https://www.thinkahead.com, the “Terms”) govern your access and use of www.thinkahead.com (the “Site”), and all products, services, mobile websites, and native mobile applications (collectively and together with the Site, the “Services”) that are owned and operated by Beyondly, Inc. ("ThinkAhead",” “we,” “us,” or “our”). </p>
+<p>
 Please read these Terms fully and carefully before using the Services, because these Terms form a legally binding contract between you and ThinkAhead for your use of the Services.  We provide you with access to and use of the Services subject to your compliance with these Terms.  By using the Services, you agree to be bound by these Terms. If you are a financial advisor accessing the Services on behalf of your customer or another entity, you represent and warrant that you have the authority to agree to these Terms on their behalf.
-
+</p>
+      <p>
 In other words: This agreement governs your use of ThinkAhead and may affect your legal rights.
-
+        </p>
 1. Eligibility
 
 By registering for the Services, you represent and warrant that you are at least 18 years of age.  If you are under 18, you may not, under any circumstances or for any reason, use the Services.  We reserve the right to change our eligibility criteria at any time, and to refuse to offer the Services to anyone for any reason or no reason at all.  You are solely responsible for ensuring that these Terms comply with all applicable laws, rules and regulations (collectively, “Laws”), and your right to use the Services is revoked wherever these Terms, your use of the Services, or any part of the Services conflicts with any Laws.
@@ -215,6 +216,7 @@ Berlin
 
 EFFECTIVE DATE: 04/10/2019
 LAST UPDATE: 04/10/2019
+        
     </div>
   )
 }

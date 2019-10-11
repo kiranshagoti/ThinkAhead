@@ -1,11 +1,10 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-
 const ProtectedRoute = ({
   component: Component,
   user,
   path,
-  redirectPath = "/login",
+  redirectPath = "/hello",
   ...rest
 }) => {
   console.log(user);
@@ -22,5 +21,4 @@ const ProtectedRoute = ({
     />
   );
 };
-
-export default ProtectedRoute;
+export default ProtectedRoute;  

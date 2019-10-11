@@ -1,27 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import HomeIcon from "@material-ui/icons/Home";
-import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
-import MessageIcon from "@material-ui/icons/Message";
-import LocalBarIcon from "@material-ui/icons/LocalBar";
+// import { makeStyles } from "@material-ui/core/styles";
+// import BottomNavigation from "@material-ui/core/BottomNavigation";
+// import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+// import HomeIcon from "@material-ui/icons/Home";
+// import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
+// import MessageIcon from "@material-ui/icons/Message";
+// import LocalBarIcon from "@material-ui/icons/LocalBar";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
-  root: {
-    width: "100vw"
-  }
-});
 
-export default function BottomNavbar() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState("recents");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+export default function BottomNavbar(props) {
   return (
     // <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
     //   <Link to='/'>
@@ -35,24 +24,24 @@ export default function BottomNavbar() {
     //   <BottomNavigationAction label="Message" value="message" icon={<MessageIcon />} /></Link>
     // </BottomNavigation>
     <>
-      <div className="bar">
-  
-        </div>
+    {props.user && props.user.funeral &&
     <div className='bottom-nav'>
-      <div className='homeSection-btn'>
+      <div className='homeSection-bot-btn'>
         <Link to="/"><img src='../../../home-symbol@2x.png' alt="homeicon" /></Link>
       </div>
-      <div className='homeSection-btn'>
+      <div className='homeSection-bot-btn'>
         <Link to="/body"><img src='../../../body-symbol@2x.png' alt="bodyicon" /></Link>
       </div>
-      <div className='homeSection-btn'>
+      <div className='homeSection-bot-btn'>
         <Link to="/event"><img src='../../../party-symbol@2x.png' alt="eventicon" /></Link>
       </div>
-      <div className='homeSection-btn'>
+      <div className='homeSection-bot-btn'>
         <Link to="/messages"><img src='../../../document-symbol@2x.png' alt="messagesicon" /></Link>
       </div>
 
       </div>
+      }
       </>
-  );
-}
+    )
+  }
+
